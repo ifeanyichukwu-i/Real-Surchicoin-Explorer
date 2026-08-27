@@ -123,7 +123,7 @@ a{color:inherit}
 .id-right{display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap;position:relative;z-index:1}
 .price-block{text-align:right;position:relative}
 .price-main{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;line-height:1}
-.price-main sup{font-size:0.55em;font-weight:700;color:var(--gold);top:-0.5em}
+.price-main sub{font-size:0.55em;font-weight:700;color:var(--gold);bottom:-0.3em;position:relative}
 .price-change-inline{display:inline-flex;align-items:center;gap:4px;font-size:12.5px;font-weight:700;padding:2px 8px;border-radius:6px;margin-left:8px;vertical-align:middle}
 .price-change-inline.up{color:var(--green);background:var(--green-tint)}
 .price-change-inline.down{color:var(--red);background:var(--red-tint)}
@@ -253,6 +253,16 @@ a{color:inherit}
 .notice-box{margin:14px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--panel2);font-size:11px;color:var(--muted);line-height:1.6}
 .notice-box b{color:var(--ink2)}
 
+.pairs-toggle-btn{
+  display:flex;align-items:center;justify-content:center;gap:6px;width:100%;
+  padding:11px 14px;font-size:11.5px;font-weight:600;color:var(--gold);
+  background:var(--gold-tint);border:none;border-top:1px solid var(--border);
+  cursor:pointer;transition:all .15s;
+}
+.pairs-toggle-btn:hover{background:rgba(228,185,92,0.16)}
+.pairs-toggle-btn svg{width:12px;height:12px;transition:transform .2s}
+.pairs-toggle-btn.expanded svg{transform:rotate(180deg)}
+
 /* ═══════════ RECENT TRADES ═══════════ */
 .trades-section{border-bottom:1px solid var(--border)}
 .trades-head{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--border);background:var(--panel)}
@@ -293,6 +303,8 @@ a{color:inherit}
 .footer{text-align:center;padding:1.8rem 0;font-size:11px;color:var(--muted2)}
 .footer .hl{color:var(--gold);font-weight:600}
 .footer-row{margin-bottom:4px}
+.footer-brand{display:inline-flex;align-items:center;gap:7px;justify-content:center}
+.footer-logo{width:16px;height:16px;border-radius:5px;object-fit:cover;border:1px solid var(--border-strong)}
 
 @media(max-width:1024px){
   .terminal-grid{grid-template-columns:1fr}
@@ -552,7 +564,10 @@ a{color:inherit}
   </div>
 
   <div class="footer">
-    <div class="footer-row">SURCHI Terminal · Live on-chain data</div>
+    <div class="footer-row footer-brand">
+      <img class="footer-logo" src="https://raw.githubusercontent.com/surchiai/Html/refs/heads/main/public/Logo.png" alt="SURCHI"/>
+      <span>SURCHI Terminal · Live on-chain data</span>
+    </div>
     <div class="footer-row mono" style="word-break:break-all">x95HN3DWvbfCBtTjGm587z8suK3ec6cwQwgZNLbWKyp</div>
   </div>
 
@@ -564,9 +579,9 @@ const GT_TOKEN_API = `https://api.geckoterminal.com/api/v2/networks/solana/token
 const GT_POOLS_API = `https://api.geckoterminal.com/api/v2/networks/solana/tokens/${MINT}/pools`;
 const GT_TRADES_API = (poolAddress) => `https://api.geckoterminal.com/api/v2/networks/solana/pools/${poolAddress}/trades`;
 
-const SUPERSCRIPT_DIGITS = ['⁰','¹','²','³','⁴','⁵','⁶','⁷','⁸','⁹'];
-function toSuperscript(num){
-  return String(num).split('').map(d => SUPERSCRIPT_DIGITS[+d] ?? d).join('');
+const SUBSCRIPT_DIGITS = ['₀','₁','₂','₃','₄','₅','₆','₇','₈','₉'];
+function toSubscript(num){
+  return String(num).split('').map(d => SUBSCRIPT_DIGITS[+d] ?? d).join('');
 }
 
 function fmtUsd(n, opts={}){
@@ -580,9 +595,9 @@ function fmtUsd(n, opts={}){
 }
 
 /*
- * Formats very small prices with a superscript zero-count, e.g.
- *   0.00000000455  ->  $0.0⁸455
- * The digit shown in superscript is the count of zeros that sit
+ * Formats very small prices with a subscript zero-count, e.g.
+ *   0.00000000455  ->  $0.0₈455
+ * The digit shown in subscript is the count of zeros that sit
  * between the literal "0.0" and the first significant digit — this
  * keeps the string short instead of printing a wall of zeros.
  */
@@ -609,14 +624,14 @@ function fmtPrice(n, sigFigs=3){
     return (neg?'-':'')+"$"+s;
   }
   const sig = decimals.substring(totalZeros, totalZeros + sigFigs);
-  const supCount = totalZeros - 1; // "0.0" already displays one of the zeros
-  return (neg?'-':'')+"$0.0"+toSuperscript(supCount)+sig;
+  const subCount = totalZeros - 1; // "0.0" already displays one of the zeros
+  return (neg?'-':'')+"$0.0"+toSubscript(subCount)+sig;
 }
 
-// Renders fmtPrice()'s output as real HTML <sup> for nicer sizing in the hero price.
+// Renders fmtPrice()'s output as a real HTML <sub> tag so the zero-count sits below the line.
 function fmtPriceHtml(n, sigFigs=3){
   const raw = fmtPrice(n, sigFigs);
-  return raw.replace(/([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/, m => `<sup>${m}</sup>`);
+  return raw.replace(/([₀₁₂₃₄₅₆₇₈₉]+)/, m => `<sub>${m}</sub>`);
 }
 
 function fmtNum(n){
@@ -686,31 +701,58 @@ function renderFlow(tx){
   }).join('');
 }
 
-function renderPairs(pools){
+const PAIRS_VISIBLE_COUNT = 3;
+let allPools = [];
+let pairsExpanded = false;
+
+function pairCardHtml(p){
+  const change = p.change24;
+  const changeColor = change>=0 ? 'var(--green)' : 'var(--red)';
+  return `
+    <div class="pair-card">
+      <div class="pair-top">
+        <span class="pair-name">${p.baseSymbol}/${p.quoteSymbol}</span>
+        <span class="pair-dex">${p.dexName}</span>
+      </div>
+      <div class="pair-stats">
+        <span>Liq <span class="val">${fmtUsd(p.liquidity)}</span></span>
+        <span>Vol24h <span class="val">${fmtUsd(p.volume24)}</span></span>
+        <span style="color:${changeColor};font-weight:700">${fmtPct(change)}</span>
+      </div>
+    </div>`;
+}
+
+function renderPairsList(){
   const list = document.getElementById('pairsList');
   const meta = document.getElementById('pairsMeta');
-  if(!pools || !pools.length){
+  if(!allPools.length){
     list.innerHTML = '<div class="error-row">No live pools found for this mint.</div>';
     meta.textContent = '';
     return;
   }
-  meta.textContent = `${pools.length} found`;
-  list.innerHTML = pools.slice(0,8).map(p=>{
-    const change = p.change24;
-    const changeColor = change>=0 ? 'var(--green)' : 'var(--red)';
-    return `
-      <div class="pair-card">
-        <div class="pair-top">
-          <span class="pair-name">${p.baseSymbol}/${p.quoteSymbol}</span>
-          <span class="pair-dex">${p.dexName}</span>
-        </div>
-        <div class="pair-stats">
-          <span>Liq <span class="val">${fmtUsd(p.liquidity)}</span></span>
-          <span>Vol24h <span class="val">${fmtUsd(p.volume24)}</span></span>
-          <span style="color:${changeColor};font-weight:700">${fmtPct(change)}</span>
-        </div>
-      </div>`;
-  }).join('');
+  meta.textContent = `${allPools.length} found`;
+  const visible = pairsExpanded ? allPools : allPools.slice(0, PAIRS_VISIBLE_COUNT);
+  let html = visible.map(pairCardHtml).join('');
+  if(allPools.length > PAIRS_VISIBLE_COUNT){
+    const hiddenCount = allPools.length - PAIRS_VISIBLE_COUNT;
+    html += `
+      <button class="pairs-toggle-btn ${pairsExpanded ? 'expanded':''}" onclick="togglePairsExpanded()">
+        <span>${pairsExpanded ? 'Show less' : `Show ${hiddenCount} more pair${hiddenCount>1?'s':''}`}</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>`;
+  }
+  list.innerHTML = html;
+}
+
+function togglePairsExpanded(){
+  pairsExpanded = !pairsExpanded;
+  renderPairsList();
+}
+
+function renderPairs(pools){
+  allPools = pools || [];
+  pairsExpanded = false;
+  renderPairsList();
 }
 
 /* ═══════════ REAL-TIME BUY/SELL TRADE FEED ═══════════ */
