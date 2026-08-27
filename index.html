@@ -53,6 +53,8 @@ a{color:inherit}
 @keyframes pulseLive{0%,100%{opacity:1}50%{opacity:0.4}}
 @keyframes scanSweep{0%{transform:translateX(-100%)}100%{transform:translateX(220%)}}
 @keyframes ringSpin{to{transform:rotate(360deg)}}
+@keyframes flashGreen{0%{background:rgba(62,220,154,0.22)}100%{background:transparent}}
+@keyframes flashRed{0%{background:rgba(255,92,122,0.22)}100%{background:transparent}}
 
 /* ═══════════ TOPBAR ═══════════ */
 .topbar{
@@ -121,6 +123,7 @@ a{color:inherit}
 .id-right{display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap;position:relative;z-index:1}
 .price-block{text-align:right;position:relative}
 .price-main{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;line-height:1}
+.price-main sup{font-size:0.55em;font-weight:700;color:var(--gold);top:-0.5em}
 .price-change-inline{display:inline-flex;align-items:center;gap:4px;font-size:12.5px;font-weight:700;padding:2px 8px;border-radius:6px;margin-left:8px;vertical-align:middle}
 .price-change-inline.up{color:var(--green);background:var(--green-tint)}
 .price-change-inline.down{color:var(--red);background:var(--red-tint)}
@@ -250,6 +253,27 @@ a{color:inherit}
 .notice-box{margin:14px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--panel2);font-size:11px;color:var(--muted);line-height:1.6}
 .notice-box b{color:var(--ink2)}
 
+/* ═══════════ RECENT TRADES ═══════════ */
+.trades-section{border-bottom:1px solid var(--border)}
+.trades-head{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--border);background:var(--panel)}
+.trades-title{font-size:10px;font-weight:700;color:var(--ink2);text-transform:uppercase;letter-spacing:0.07em}
+.trades-live{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;color:var(--green)}
+.trades-scroll{max-height:360px;overflow-y:auto}
+.trades-table{width:100%;border-collapse:collapse}
+.trades-table thead th{
+  position:sticky;top:0;background:var(--panel);
+  font-size:9.5px;font-weight:700;color:var(--muted2);text-transform:uppercase;letter-spacing:0.06em;
+  text-align:left;padding:8px 14px;border-bottom:1px solid var(--border);
+}
+.trades-table td{padding:8px 14px;font-size:11px;border-bottom:1px solid var(--border);font-family:'IBM Plex Mono',monospace;color:var(--ink2);white-space:nowrap}
+.trades-table tbody tr:last-child td{border-bottom:none}
+.trade-row-new.buy{animation:flashGreen 1.4s ease}
+.trade-row-new.sell{animation:flashRed 1.4s ease}
+.side-tag{font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:5px;display:inline-block;letter-spacing:0.02em}
+.side-tag.buy{color:var(--green);background:var(--green-tint)}
+.side-tag.sell{color:var(--red);background:var(--red-tint)}
+.trades-empty{padding:2rem;text-align:center;color:var(--muted2);font-size:11.5px}
+
 /* ═══════════ ENGINE STRIP ═══════════ */
 .engine-strip{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--border)}
 .engine-cell{padding:20px 20px;border-right:1px solid var(--border);text-align:center}
@@ -309,6 +333,8 @@ a{color:inherit}
 
   .chart-embed-wrap{height:320px}
   .flow-grid{grid-template-columns:repeat(2,1fr)}
+
+  .trades-table td, .trades-table th{padding:8px 10px;font-size:10px}
 
   .engine-cell{padding:16px 12px}
   .engine-val{font-size:18px}
@@ -481,6 +507,31 @@ a{color:inherit}
 
   </div>
 
+  <!-- RECENT TRADES (real-time buy/sell order feed) -->
+  <div class="trades-section">
+    <div class="trades-head">
+      <span class="trades-title">Recent Trades</span>
+      <span class="trades-live"><span class="live-dot"></span><span id="tradesSync">Live</span></span>
+    </div>
+    <div class="trades-scroll">
+      <table class="trades-table">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Side</th>
+            <th>Amount SURCHI</th>
+            <th>Price</th>
+            <th>Total (USD)</th>
+            <th>Trader</th>
+          </tr>
+        </thead>
+        <tbody id="tradesBody">
+          <tr><td colspan="6"><div class="loading-row"><span class="spinner"></span>Loading recent trades…</div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <!-- ENGINE STRIP -->
   <div class="engine-strip">
     <div class="engine-cell">
@@ -511,6 +562,12 @@ a{color:inherit}
 const MINT = "x95HN3DWvbfCBtTjGm587z8suK3ec6cwQwgZNLbWKyp";
 const GT_TOKEN_API = `https://api.geckoterminal.com/api/v2/networks/solana/tokens/${MINT}`;
 const GT_POOLS_API = `https://api.geckoterminal.com/api/v2/networks/solana/tokens/${MINT}/pools`;
+const GT_TRADES_API = (poolAddress) => `https://api.geckoterminal.com/api/v2/networks/solana/pools/${poolAddress}/trades`;
+
+const SUPERSCRIPT_DIGITS = ['⁰','¹','²','³','⁴','⁵','⁶','⁷','⁸','⁹'];
+function toSuperscript(num){
+  return String(num).split('').map(d => SUPERSCRIPT_DIGITS[+d] ?? d).join('');
+}
 
 function fmtUsd(n, opts={}){
   if(n===null||n===undefined||isNaN(n)) return "—";
@@ -518,15 +575,50 @@ function fmtUsd(n, opts={}){
   if(abs >= 1e9) return "$"+(n/1e9).toFixed(2)+"B";
   if(abs >= 1e6) return "$"+(n/1e6).toFixed(2)+"M";
   if(abs >= 1e3) return "$"+(n/1e3).toFixed(2)+"K";
-  if(abs < 0.01 && abs > 0) return "$"+n.toFixed(8);
+  if(abs < 0.01 && abs > 0) return fmtPrice(n);
   return "$"+n.toFixed(opts.decimals ?? 4);
 }
-function fmtPrice(n){
+
+/*
+ * Formats very small prices with a superscript zero-count, e.g.
+ *   0.00000000455  ->  $0.0⁸455
+ * The digit shown in superscript is the count of zeros that sit
+ * between the literal "0.0" and the first significant digit — this
+ * keeps the string short instead of printing a wall of zeros.
+ */
+function fmtPrice(n, sigFigs=3){
   if(n===null||n===undefined||isNaN(n)) return "—";
-  if(n < 0.000001) return "$"+n.toExponential(2);
-  if(n < 1) return "$"+n.toFixed(8).replace(/0+$/,'').replace(/\.$/,'');
-  return "$"+n.toFixed(4);
+  if(n === 0) return "$0.00";
+  const neg = n < 0;
+  const abs = Math.abs(n);
+  if(abs >= 1){
+    const s = abs.toFixed(4).replace(/0+$/,'').replace(/\.$/,'');
+    return (neg?'-':'')+"$"+s;
+  }
+  // Get a long, non-exponential decimal string so we can count leading zeros.
+  const fixed = abs.toFixed(20);
+  const decimals = fixed.split('.')[1] || '';
+  let totalZeros = 0;
+  for(let i=0;i<decimals.length;i++){
+    if(decimals[i] === '0') totalZeros++;
+    else break;
+  }
+  // Not tiny enough to warrant compression — show plain decimals.
+  if(totalZeros < 4){
+    const s = abs.toFixed(8).replace(/0+$/,'').replace(/\.$/,'');
+    return (neg?'-':'')+"$"+s;
+  }
+  const sig = decimals.substring(totalZeros, totalZeros + sigFigs);
+  const supCount = totalZeros - 1; // "0.0" already displays one of the zeros
+  return (neg?'-':'')+"$0.0"+toSuperscript(supCount)+sig;
 }
+
+// Renders fmtPrice()'s output as real HTML <sup> for nicer sizing in the hero price.
+function fmtPriceHtml(n, sigFigs=3){
+  const raw = fmtPrice(n, sigFigs);
+  return raw.replace(/([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/, m => `<sup>${m}</sup>`);
+}
+
 function fmtNum(n){
   if(n===null||n===undefined||isNaN(n)) return "—";
   return new Intl.NumberFormat('en-US').format(n);
@@ -535,6 +627,18 @@ function fmtPct(n){
   if(n===null||n===undefined||isNaN(n)) return "—";
   const s = n>0?"+":"";
   return s+n.toFixed(2)+"%";
+}
+function timeAgo(ts){
+  if(!ts) return '—';
+  const diff = Math.max(0, Math.floor((Date.now() - new Date(ts).getTime())/1000));
+  if(diff < 5) return 'now';
+  if(diff < 60) return diff+'s ago';
+  if(diff < 3600) return Math.floor(diff/60)+'m ago';
+  return Math.floor(diff/3600)+'h ago';
+}
+function shortAddr(addr){
+  if(!addr) return '—';
+  return addr.slice(0,4)+'…'+addr.slice(-4);
 }
 
 let togglePlatformsOpen = false;
@@ -609,6 +713,76 @@ function renderPairs(pools){
   }).join('');
 }
 
+/* ═══════════ REAL-TIME BUY/SELL TRADE FEED ═══════════ */
+let currentPoolAddress = null;
+let lastTradeIds = new Set();
+let tradesPollTimer = null;
+
+async function fetchTrades(poolAddress){
+  if(!poolAddress) return;
+  const syncEl = document.getElementById('tradesSync');
+  try{
+    const res = await fetch(GT_TRADES_API(poolAddress));
+    if(!res.ok) throw new Error('trades response not ok');
+    const json = await res.json();
+    const trades = (json.data || []).map(t=>{
+      const a = t.attributes || {};
+      const kind = (a.kind || '').toLowerCase(); // "buy" or "sell"
+      const priceUsd = parseFloat(a.price_to_in_usd ?? a.price_from_in_usd);
+      const baseAmount = parseFloat(kind === 'buy' ? a.to_token_amount : a.from_token_amount);
+      return {
+        id: t.id,
+        kind: kind === 'sell' ? 'sell' : 'buy',
+        priceUsd,
+        volumeUsd: parseFloat(a.volume_in_usd),
+        baseAmount,
+        trader: a.tx_from_address,
+        txHash: a.tx_hash,
+        timestamp: a.block_timestamp
+      };
+    }).filter(t => !isNaN(t.volumeUsd));
+    renderTrades(trades);
+    if(syncEl) syncEl.textContent = 'Live';
+  }catch(err){
+    console.error('trades fetch error', err);
+    if(syncEl) syncEl.textContent = 'Reconnecting…';
+  }
+}
+
+function renderTrades(trades){
+  const body = document.getElementById('tradesBody');
+  if(!trades || !trades.length){
+    body.innerHTML = '<tr><td colspan="6"><div class="trades-empty">No recent trades found for this pool.</div></td></tr>';
+    return;
+  }
+  const isFirstLoad = lastTradeIds.size === 0;
+  const newIds = new Set();
+  body.innerHTML = trades.slice(0, 30).map(t=>{
+    newIds.add(t.id);
+    const flashClass = (!isFirstLoad && !lastTradeIds.has(t.id)) ? `trade-row-new ${t.kind}` : '';
+    const explorerUrl = t.txHash ? `https://solscan.io/tx/${t.txHash}` : '#';
+    return `
+      <tr class="${flashClass}">
+        <td>${timeAgo(t.timestamp)}</td>
+        <td><span class="side-tag ${t.kind}">${t.kind === 'buy' ? 'BUY' : 'SELL'}</span></td>
+        <td>${fmtNum(Math.round(t.baseAmount))}</td>
+        <td>${fmtPrice(t.priceUsd)}</td>
+        <td>${fmtUsd(t.volumeUsd)}</td>
+        <td><a href="${explorerUrl}" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">${shortAddr(t.trader)}</a></td>
+      </tr>`;
+  }).join('');
+  lastTradeIds = newIds;
+}
+
+function startTradesPolling(poolAddress){
+  currentPoolAddress = poolAddress;
+  if(tradesPollTimer) clearInterval(tradesPollTimer);
+  if(!poolAddress) return;
+  lastTradeIds = new Set(); // fresh pool → don't flash the whole first batch
+  fetchTrades(poolAddress);
+  tradesPollTimer = setInterval(()=> fetchTrades(currentPoolAddress), 7000);
+}
+
 async function fetchAll(){
   const btn = document.getElementById('refreshBtn');
   btn.classList.add('spinning');
@@ -658,6 +832,7 @@ async function fetchAll(){
       renderChart(null);
       renderPairs([]);
       document.getElementById('flowGrid').innerHTML = '<div class="error-row" style="grid-column:1/-1">No flow data available.</div>';
+      document.getElementById('tradesBody').innerHTML = '<tr><td colspan="6"><div class="trades-empty">No pool available yet.</div></td></tr>';
       syncEl.textContent = 'Last checked ' + new Date().toLocaleTimeString();
       btn.classList.remove('spinning');
       return;
@@ -666,7 +841,7 @@ async function fetchAll(){
     // pick the deepest-liquidity pool as primary
     const primary = pools.reduce((a,b)=> (b.liquidity||0) > (a.liquidity||0) ? b : a, pools[0]);
 
-    document.getElementById('heroPrice').textContent = fmtPrice(primary.priceUsd);
+    document.getElementById('heroPrice').innerHTML = fmtPriceHtml(primary.priceUsd);
     const changeEl = document.getElementById('priceChangeInline');
     if(!isNaN(primary.change24)){
       changeEl.style.display = 'inline-flex';
@@ -694,6 +869,11 @@ async function fetchAll(){
     renderFlow(primary.transactions);
     renderPairs(pools.sort((a,b)=>(b.liquidity||0)-(a.liquidity||0)));
 
+    // (re)start the real-time trade feed against the current primary pool
+    if(primary.address !== currentPoolAddress){
+      startTradesPolling(primary.address);
+    }
+
     syncEl.textContent = 'Synced ' + new Date().toLocaleTimeString();
   }catch(err){
     console.error(err);
@@ -705,7 +885,7 @@ async function fetchAll(){
 }
 
 fetchAll();
-setInterval(fetchAll, 30000);
+setInterval(fetchAll, 30000); // full market data refresh
 </script>
 </body>
 </html>
