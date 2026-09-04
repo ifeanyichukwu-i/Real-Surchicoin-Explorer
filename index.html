@@ -304,6 +304,14 @@ a{color:inherit}
 .footer-row{margin-bottom:4px}
 .footer-brand{display:inline-flex;align-items:center;gap:7px;justify-content:center}
 .footer-logo{width:16px;height:16px;border-radius:5px;object-fit:cover;border:1px solid var(--border-strong)}
+.footer-socials{display:flex;align-items:center;justify-content:center;gap:10px;margin:14px 0 10px}
+.social-icon{
+  display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:9px;
+  background:var(--panel2);border:1px solid var(--border-strong);color:var(--muted);
+  transition:all .15s;text-decoration:none;
+}
+.social-icon svg{width:16px;height:16px}
+.social-icon:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-tint);transform:translateY(-2px)}
 
 @media(max-width:1024px){
   .terminal-grid{grid-template-columns:1fr}
@@ -567,6 +575,29 @@ a{color:inherit}
       <img class="footer-logo" src="https://raw.githubusercontent.com/surchiai/Html/refs/heads/main/public/Logo.png" alt="SURCHI"/>
       <span>SURCHI Terminal · Live on-chain data</span>
     </div>
+    <div class="footer-socials">
+      <a class="social-icon" href="https://www.surchi.xyz" target="_blank" rel="noopener" aria-label="Website" title="Website">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9z"/></svg>
+      </a>
+      <a class="social-icon" href="https://solscan.io/token/C8QShhzBJEA769SYTKRfg2fFFNP3dxqaKumApMi4huhi" target="_blank" rel="noopener" aria-label="Solscan" title="Solscan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </a>
+      <a class="social-icon" href="https://x.com/surchicoin" target="_blank" rel="noopener" aria-label="X (Twitter)" title="X / Twitter">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2.6h3.2l-7 8 8.2 10.8h-6.4l-5-6.6-5.8 6.6H2L9.5 13 1.7 2.6h6.5l4.5 6 6.2-6zM17.7 19.5h1.8L7 4.4H5l12.7 15.1z"/></svg>
+      </a>
+      <a class="social-icon" href="https://discord.gg/uH2Jp3yu5h" target="_blank" rel="noopener" aria-label="Discord" title="Discord">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 5.4A18 18 0 0 0 15.9 4l-.3.6a13 13 0 0 1 3.6 1.3 15.6 15.6 0 0 0-13.9 0 13 13 0 0 1 3.6-1.3L8.6 4a18 18 0 0 0-4.4 1.4C1.7 9 1 12.5 1.3 16a18.3 18.3 0 0 0 5.4 2.6 13 13 0 0 0 1.2-1.9 11.7 11.7 0 0 1-1.9-.9l.5-.4a13 13 0 0 0 11 0l.5.4a11.7 11.7 0 0 1-1.9.9c.4.7.8 1.3 1.2 1.9a18.2 18.2 0 0 0 5.4-2.6c.4-4-.7-7.5-2.4-10.6zM9 14.3c-.8 0-1.5-.8-1.5-1.7S8.1 11 9 11s1.5.8 1.5 1.6-.6 1.7-1.5 1.7zm6 0c-.8 0-1.5-.8-1.5-1.7S14.1 11 15 11s1.5.8 1.5 1.6-.6 1.7-1.5 1.7z"/></svg>
+      </a>
+      <a class="social-icon" href="https://t.me/Surchicommunity" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.6 18.6 20c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9L18 7.3c.5-.4-.1-.6-.7-.3L6.4 13.6l-4.8-1.5c-1-.3-1-1 .2-1.5L20.5 3.7c.9-.3 1.6.2 1.4 1z"/></svg>
+      </a>
+      <a class="social-icon" href="https://medium.com/@surchicoin" target="_blank" rel="noopener" aria-label="Medium" title="Medium">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 6.5c0-.4-.1-.7-.4-.9L1 3.6V3.3h6.2l4.8 10.5L16.3 3.3h5.9v.3l-1.4 1.4c-.1.1-.2.3-.1.5v12.2c0 .2 0 .3.1.5l1.4 1.4v.3h-6.9v-.3l1.4-1.4c.1-.2.1-.3.1-.5V7.8l-4.9 12.4h-.7L6.1 7.8v8.3c0 .3.1.7.4 1l1.8 2.1v.3H3.1v-.3l1.8-2.1c.3-.3.4-.7.3-1V6.5z"/></svg>
+      </a>
+      <a class="social-icon" href="https://GitHub.com/surchiai" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.3-1.1.6-1.4-2.2-.2-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.2-.5-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 4.9 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.5.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .3.3.6.9.6 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
+      </a>
+    </div>
     <div class="footer-row mono" style="word-break:break-all">C8QShhzBJEA769SYTKRfg2fFFNP3dxqaKumApMi4huhi</div>
   </div>
 
@@ -593,13 +624,6 @@ function fmtUsd(n, opts={}){
   return "$"+n.toFixed(opts.decimals ?? 4);
 }
 
-/*
- * Formats very small prices with a subscript zero-count, e.g.
- *   0.00000000455  ->  $0.0₈455
- * The digit shown in subscript is the count of zeros that sit
- * between the literal "0.0" and the first significant digit — this
- * keeps the string short instead of printing a wall of zeros.
- */
 function fmtPrice(n, sigFigs=3){
   if(n===null||n===undefined||isNaN(n)) return "—";
   if(n === 0) return "$0.00";
@@ -609,7 +633,6 @@ function fmtPrice(n, sigFigs=3){
     const s = abs.toFixed(4).replace(/0+$/,'').replace(/\.$/,'');
     return (neg?'-':'')+"$"+s;
   }
-  // Get a long, non-exponential decimal string so we can count leading zeros.
   const fixed = abs.toFixed(20);
   const decimals = fixed.split('.')[1] || '';
   let totalZeros = 0;
@@ -617,19 +640,15 @@ function fmtPrice(n, sigFigs=3){
     if(decimals[i] === '0') totalZeros++;
     else break;
   }
-  // Not tiny enough to warrant compression — show plain decimals.
   if(totalZeros < 4){
     const s = abs.toFixed(8).replace(/0+$/,'').replace(/\.$/,'');
     return (neg?'-':'')+"$"+s;
   }
   const sig = decimals.substring(totalZeros, totalZeros + sigFigs);
-  const subCount = totalZeros - 1; // "0.0" already displays one of the zeros
+  const subCount = totalZeros - 1;
   return (neg?'-':'')+"$0.0"+toSubscript(subCount)+sig;
 }
 
-// fmtPrice() already returns the zero-count as a plain inline Unicode
-// subscript character (e.g. "$0.0₈455") — no HTML wrapping needed, this
-// keeps it sitting on the baseline instead of being shifted up/down.
 function fmtPriceHtml(n, sigFigs=3){
   return fmtPrice(n, sigFigs);
 }
@@ -769,7 +788,7 @@ async function fetchTrades(poolAddress){
     const json = await res.json();
     const trades = (json.data || []).map(t=>{
       const a = t.attributes || {};
-      const kind = (a.kind || '').toLowerCase(); // "buy" or "sell"
+      const kind = (a.kind || '').toLowerCase();
       const priceUsd = parseFloat(a.price_to_in_usd ?? a.price_from_in_usd);
       const baseAmount = parseFloat(kind === 'buy' ? a.to_token_amount : a.from_token_amount);
       return {
@@ -820,7 +839,7 @@ function startTradesPolling(poolAddress){
   currentPoolAddress = poolAddress;
   if(tradesPollTimer) clearInterval(tradesPollTimer);
   if(!poolAddress) return;
-  lastTradeIds = new Set(); // fresh pool → don't flash the whole first batch
+  lastTradeIds = new Set();
   fetchTrades(poolAddress);
   tradesPollTimer = setInterval(()=> fetchTrades(currentPoolAddress), 7000);
 }
@@ -880,7 +899,6 @@ async function fetchAll(){
       return;
     }
 
-    // pick the deepest-liquidity pool as primary
     const primary = pools.reduce((a,b)=> (b.liquidity||0) > (a.liquidity||0) ? b : a, pools[0]);
 
     document.getElementById('heroPrice').textContent = fmtPriceHtml(primary.priceUsd);
@@ -911,7 +929,6 @@ async function fetchAll(){
     renderFlow(primary.transactions);
     renderPairs(pools.sort((a,b)=>(b.liquidity||0)-(a.liquidity||0)));
 
-    // (re)start the real-time trade feed against the current primary pool
     if(primary.address !== currentPoolAddress){
       startTradesPolling(primary.address);
     }
@@ -927,7 +944,7 @@ async function fetchAll(){
 }
 
 fetchAll();
-setInterval(fetchAll, 25000); // full market data refresh (every 25s)
+setInterval(fetchAll, 25000);
 </script>
 </body>
 </html>
