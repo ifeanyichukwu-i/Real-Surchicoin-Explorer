@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SURCHI Terminal — $SURCHI Token Explorer</title>
+<title>SURCHI Terminal — $SUR Token Explorer</title>
 <link rel="icon" href="https://raw.githubusercontent.com/surchiai/Html/refs/heads/main/public/Logo.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
@@ -401,8 +401,8 @@ a{color:inherit}
       </div>
       <div>
         <div class="id-name-row">
-          <span class="id-name">SURCHI COIN</span>
-          <span class="id-ticker">$SURCHI</span>
+          <span class="id-name">SURCHI</span>
+          <span class="id-ticker">$SUR</span>
         </div>
         <div class="id-badges">
           <span class="id-badge">Solana · SPL-9</span>
@@ -434,7 +434,7 @@ a{color:inherit}
   <!-- PLATFORM REDIRECT DROPDOWN -->
   <div class="platform-panel">
     <button class="platform-toggle" id="platformToggle" onclick="togglePlatforms()">
-      <span>View $SURCHI on</span>
+      <span>View $SUR on</span>
       <svg id="platformChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="width:15px;height:15px;transition:transform .2s">
         <path d="M6 9l6 6 6-6"/>
       </svg>
@@ -538,7 +538,7 @@ a{color:inherit}
           <tr>
             <th>Time</th>
             <th>Side</th>
-            <th>Amount SURCHI</th>
+            <th>Amount SUR</th>
             <th>Price</th>
             <th>Total (USD)</th>
             <th>Trader</th>
@@ -881,7 +881,7 @@ async function fetchAll(){
         change6: parseFloat(a.price_change_percentage?.h6),
         change1: parseFloat(a.price_change_percentage?.h1),
         transactions: a.transactions,
-        baseSymbol: baseTok?.attributes?.symbol || 'SURCHI',
+        baseSymbol: baseTok?.attributes?.symbol || 'SUR',
         quoteSymbol: quoteTok?.attributes?.symbol || 'SOL',
         dexName: dexInfo?.attributes?.name || 'dex'
       };
