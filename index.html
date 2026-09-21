@@ -1,950 +1,1453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Surchi Terminal</title>
-<link rel="icon" href="https://raw.githubusercontent.com/surchiai/Html/refs/heads/main/public/Logo.png"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>document.documentElement.className += ' js';</script>
+
+<title>SURCHI | Decentralized On-Chain Intelligence</title>
+<meta name="description" content="SURCHI is a decentralized blockchain intelligence ecosystem providing market analytics, wallet intelligence, AI-assisted security analysis and cross-chain intelligence.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#04060B">
+<meta name="color-scheme" content="dark">
+
+<link rel="canonical" href="https://www.surchi.xyz/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SURCHI">
+<meta property="og:title" content="SURCHI | Decentralized On-Chain Intelligence">
+<meta property="og:description" content="A decentralized blockchain intelligence ecosystem: market analytics, wallet intelligence, AI-assisted security analysis and cross-chain intelligence.">
+<meta property="og:url" content="https://www.surchi.xyz/">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/ifeanyichukwu-i/Real-surchi-Dex-screener-/refs/heads/main/public/Logo.png">
+<meta property="og:image:alt" content="SURCHI logo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@surchicoin">
+<meta name="twitter:title" content="SURCHI | Decentralized On-Chain Intelligence">
+<meta name="twitter:description" content="A decentralized blockchain intelligence ecosystem: market analytics, wallet intelligence, AI-assisted security analysis and cross-chain intelligence.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/ifeanyichukwu-i/Real-surchi-Dex-screener-/refs/heads/main/public/Logo.png">
+
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/ifeanyichukwu-i/Real-surchi-Dex-screener-/refs/heads/main/public/Logo.png">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/ifeanyichukwu-i/Real-surchi-Dex-screener-/refs/heads/main/public/Logo.png">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://www.surchi.xyz/#org","name":"SURCHI","url":"https://www.surchi.xyz/","logo":"https://raw.githubusercontent.com/ifeanyichukwu-i/Real-surchi-Dex-screener-/refs/heads/main/public/Logo.png","email":"support@surchi.xyz","contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"support@surchi.xyz"},"description":"SURCHI is a decentralized blockchain intelligence ecosystem providing market analytics, wallet intelligence, AI-assisted security analysis and cross-chain intelligence.","sameAs":["https://x.com/surchicoin","https://github.com/surchiai","https://discord.gg/uH2Jp3yu5h","https://t.me/Surchicommunity","https://medium.com/@surchicoin"]},
+{"@type":"WebSite","@id":"https://www.surchi.xyz/#website","url":"https://www.surchi.xyz/","name":"SURCHI","description":"Decentralized intelligence for on-chain markets.","publisher":{"@id":"https://www.surchi.xyz/#org"},"inLanguage":"en"}
+]}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+/* ==========================================================================
+   SURCHI — official website
+   Tokens · Base · Layout · Components · Sections · Motion
+   ========================================================================== */
+
 :root{
-  --bg:#0A0908;
-  --bg-glow:radial-gradient(1200px 500px at 20% -10%, rgba(228,185,92,0.10), transparent 60%),
-            radial-gradient(900px 400px at 90% 0%, rgba(201,123,74,0.07), transparent 60%);
-  --panel:#141210;
-  --panel2:#1B1815;
-  --border:#26221C;
-  --border-strong:#38322A;
-  --gold:#E4B95C;
-  --gold-dim:#B98E3A;
-  --gold-tint:rgba(228,185,92,0.10);
-  --gold-glow:rgba(228,185,92,0.35);
-  --green:#3EDC9A;
-  --green-tint:rgba(62,220,154,0.09);
-  --red:#FF5C7A;
-  --red-tint:rgba(255,92,122,0.09);
-  --bronze:#C97B4A;
-  --bronze-tint:rgba(201,123,74,0.10);
-  --ink:#F6F1E6;
-  --ink2:#D3C9B8;
-  --muted:#9C9080;
-  --muted2:#57503F;
+  --void:#04060B;
+  --panel:rgba(255,255,255,.035);
+  --line:rgba(255,255,255,.09);
+  --line-2:rgba(255,255,255,.17);
+  --text:#EAF0F8;
+  --muted:#9BA6B9;
+  --dim:#8792A6;
+  --cyan:#00F7FF;
+  --violet:#7B00FF;
+  --green:#00FF99;
+  --nav-h:4.25rem;
+  --r-btn:10px;
+  --r-card:18px;
+  --r-modal:22px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --font-display:"Sora",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-body:"Instrument Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color-scheme:dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
 }
-html{scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit;margin:0}
+
+html{
+  background:var(--void);
+  scroll-behavior:smooth;
+  scroll-padding-top:calc(env(safe-area-inset-top,0px) + 5rem);
+  -webkit-text-size-adjust:100%;
+  overflow-x:clip;
+  scrollbar-gutter:stable;
+}
+html.is-locked{overflow:hidden}
+@media (min-width:1800px){html{font-size:112.5%}}
+
 body{
-  background:var(--bg);color:var(--ink2);
-  font-family:'Inter',sans-serif;font-size:13px;line-height:1.55;
-  min-height:100vh;-webkit-font-smoothing:antialiased;
-  overflow-x:hidden;width:100%;
-  background-image:var(--bg-glow);background-attachment:fixed;
+  font-family:var(--font-body);
+  font-size:1.0625rem;
+  line-height:1.65;
+  color:var(--text);
+  background:var(--void);
+  overflow-x:clip;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
-.shell,.topbar-inner{width:100%}
-.mono{font-family:'IBM Plex Mono',monospace}
-.display{font-family:'Space Grotesk',sans-serif}
-::-webkit-scrollbar{width:8px;height:8px}
-::-webkit-scrollbar-track{background:var(--panel)}
-::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:4px}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.02em;line-height:1.1;text-wrap:balance}
+p{text-wrap:pretty}
+ul,ol{list-style:none;padding:0}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+button{font:inherit;color:inherit}
+svg{display:block}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
 
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:absolute;left:1rem;top:-4rem;z-index:100;padding:.7rem 1rem;border-radius:8px;background:var(--cyan);color:#021014;font-weight:600;text-decoration:none;transition:top .2s}
+.skip:focus{top:calc(env(safe-area-inset-top,0px) + .75rem)}
+
+.icon{width:1.5rem;height:1.5rem;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.icon--fill{fill:currentColor;stroke:none}
+
+/* ---------- Layout ---------- */
+.wrap{
+  --gutter:clamp(1.25rem,4.5vw,2.5rem);
+  width:100%;max-width:75rem;margin-inline:auto;
+  padding-left:max(var(--gutter),env(safe-area-inset-left,0px));
+  padding-right:max(var(--gutter),env(safe-area-inset-right,0px));
+}
+.section{position:relative;padding-block:clamp(4.5rem,9vw,8rem);border-top:1px solid rgba(255,255,255,.05);overflow:clip}
+.section-head{max-width:46rem}
+.section-head h2,.h2{font-size:clamp(1.9rem,1.1rem + 2.6vw,3.25rem)}
+.lead{margin-top:1.25rem;color:var(--muted);font-size:clamp(1.0625rem,.35vw + 1rem,1.25rem);max-width:38rem}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  min-height:3rem;padding:0 1.6rem;border-radius:var(--r-btn);
+  font:600 .8125rem/1 var(--font-display);letter-spacing:.08em;text-decoration:none;white-space:nowrap;
+  border:1px solid transparent;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  transition:transform .25s var(--ease),box-shadow .25s,background-color .25s,border-color .25s,color .25s;
+}
+.btn--primary{background:var(--cyan);color:#021014}
+.btn--primary:hover{background:#40FAFF;transform:translateY(-1px);box-shadow:0 10px 30px -10px rgba(0,247,255,.6)}
+.btn--primary:active{transform:none}
+.btn--ghost{background:rgba(255,255,255,.03);color:var(--text);border-color:var(--line-2)}
+.btn--ghost:hover{border-color:rgba(0,247,255,.55);background:rgba(0,247,255,.06)}
+.btn--lg{min-height:3.5rem;padding:0 2.2rem}
+.btn--sm{min-height:2.5rem;padding:0 1.15rem;font-size:.75rem}
+.btn .icon{width:1.1rem;height:1.1rem}
+
+/* ---------- Header / navigation ---------- */
+.site-header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:60;
+  height:var(--nav-h);margin-bottom:calc(var(--nav-h) * -1);
+}
+.site-header::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:rgba(4,6,11,.74);border-bottom:1px solid var(--line);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);
+  opacity:0;transition:opacity .3s;
+}
+.site-header.is-stuck::before,.site-header.menu-open::before{opacity:1}
+.bar{position:relative;z-index:2;height:100%;display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
+
+.brand{display:inline-flex;align-items:center;gap:.7rem;text-decoration:none;font:700 1.1rem/1 var(--font-display);letter-spacing:.16em;color:var(--text)}
+.logo{position:relative;display:grid;place-items:center;width:2rem;height:2rem}
+.logo svg{width:100%;height:100%}
+.logo::after{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid rgba(0,247,255,.5);opacity:0}
+.brand:hover .logo svg,.brand:hover .logo__img{filter:drop-shadow(0 0 6px rgba(0,247,255,.55))}
+.logo__img,.mk-img{display:none}
+.logo__img{width:100%;height:100%;object-fit:contain}
+.has-logo .logo__img{display:block}
+.has-logo .mk-img{display:inline}
+.has-logo .logo svg,.has-logo .modal__mark svg,.has-logo .mk{display:none}
+
+.nav{display:flex;align-items:center;gap:.25rem}
+.nav a{position:relative;padding:.5rem .8rem;border-radius:8px;font-size:.9rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav a::after{content:"";position:absolute;left:.8rem;right:.8rem;bottom:.15rem;height:1px;background:linear-gradient(90deg,var(--cyan),var(--green));transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav a:hover,.nav a[aria-current="true"]{color:var(--text)}
+.nav a:hover::after,.nav a[aria-current="true"]::after{transform:scaleX(1)}
+
+.burger{display:none;position:relative;width:2.75rem;height:2.75rem;border-radius:10px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.burger span{position:absolute;left:50%;top:50%;width:1.15rem;height:1.5px;border-radius:2px;background:currentColor;transition:transform .4s var(--ease),opacity .2s}
+.burger span:nth-child(1){transform:translate(-50%,calc(-50% - 6px))}
+.burger span:nth-child(2){transform:translate(-50%,-50%)}
+.burger span:nth-child(3){transform:translate(-50%,calc(-50% + 6px))}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translate(-50%,-50%) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0;transform:translate(-50%,-50%) scaleX(.3)}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translate(-50%,-50%) rotate(-45deg)}
+
+.menu{
+  position:fixed;inset:0;z-index:1;display:none;flex-direction:column;justify-content:space-between;gap:2rem;overflow-y:auto;
+  padding:calc(env(safe-area-inset-top,0px) + var(--nav-h) + 1.5rem) max(1.5rem,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 1.75rem) max(1.5rem,env(safe-area-inset-left,0px));
+  background:rgba(4,6,11,.97);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  opacity:0;visibility:hidden;transform:translateY(-10px);
+  transition:opacity .3s,transform .45s var(--ease),visibility 0s .45s;
+}
+.menu.is-open{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.menu ul{display:grid}
+.menu li a{display:flex;align-items:center;justify-content:space-between;padding:1.05rem .25rem;border-bottom:1px solid var(--line);font:600 1.5rem/1.2 var(--font-display);letter-spacing:-.01em;text-decoration:none;color:var(--text)}
+.menu li a .icon{width:1.1rem;height:1.1rem;color:var(--dim)}
+.menu li{opacity:0;translate:0 10px;transition:opacity .4s,translate .5s var(--ease)}
+.menu.is-open li{opacity:1;translate:none;transition-delay:calc(var(--i) * 45ms + 90ms)}
+.menu .btn{width:100%}
+
+@media (max-width:1000px){
+  .nav,.bar>.btn{display:none}
+  .burger{display:block}
+  .menu{display:flex}
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;isolation:isolate;display:flex;align-items:center;overflow:clip;border-top:0;
+  min-height:100vh;
+  min-height:calc(100svh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));
+  padding-top:calc(var(--nav-h) + 2rem);padding-bottom:clamp(3rem,7vw,5rem);
+}
+.hero__bg{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.hero__glow{position:absolute;inset:0;background:
+  radial-gradient(55% 55% at 76% 46%,rgba(123,0,255,.24),transparent 70%),
+  radial-gradient(40% 40% at 60% 58%,rgba(0,247,255,.10),transparent 70%),
+  radial-gradient(38% 38% at 6% 0%,rgba(0,255,153,.06),transparent 70%)}
+.hero__grid{position:absolute;inset:0;overflow:hidden;-webkit-mask-image:radial-gradient(75% 75% at 62% 45%,#000 15%,transparent 78%);mask-image:radial-gradient(75% 75% at 62% 45%,#000 15%,transparent 78%)}
+.hero__grid::before{content:"";position:absolute;left:0;right:0;top:-64px;bottom:0;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:64px 64px}
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%}
+
+.hero__inner{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2rem,5vw,4rem);align-items:center;width:100%}
+.hero__title{font-size:inherit;letter-spacing:0}
+.wordmark{display:flex;align-items:center;gap:.8rem;margin-bottom:1.6rem;font:700 clamp(1rem,.5vw + .9rem,1.2rem)/1 var(--font-display);letter-spacing:.36em;color:var(--text)}
+.wordmark .logo{width:2.25rem;height:2.25rem}
+.hero__headline{display:block;font-family:var(--font-display);font-weight:600;font-size:clamp(2.4rem,1rem + 4.6vw,4.75rem);line-height:1.04;letter-spacing:-.035em;color:#F4F8FF;background:linear-gradient(180deg,#FFFFFF 30%,#B9C8DE);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero .lead{max-width:34rem;margin-top:1.6rem}
+.hero__cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.25rem}
+
+.hero__visual{position:relative;width:100%;max-width:38rem;justify-self:end;aspect-ratio:1/1}
+.conv{width:100%;height:100%;overflow:visible}
+.ring{fill:none;stroke:rgba(255,255,255,.10);stroke-width:1}
+.ring--dash{stroke:rgba(0,247,255,.30);stroke-dasharray:2 7;transform-box:fill-box;transform-origin:center}
+.ring--faint{stroke:rgba(255,255,255,.05)}
+.trace{fill:none;stroke:rgba(255,255,255,.08);stroke-width:1}
+.flow{fill:none;stroke:url(#gIn);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:3 10}
+.flow--out{stroke:url(#gOut)}
+.src__dot{fill:#04060B;stroke:var(--cyan);stroke-width:1.4}
+.src__pulse{fill:none;stroke:var(--cyan);stroke-width:1;transform-box:fill-box;transform-origin:center;opacity:0}
+.core{fill:#050810;stroke:rgba(0,247,255,.5);stroke-width:1}
+.out-dot{fill:var(--green)}
+.out-halo{fill:none;stroke:var(--green);stroke-width:1;transform-box:fill-box;transform-origin:center;opacity:.0}
+
+@media (max-width:960px){
+  .hero{align-items:flex-start;padding-top:calc(var(--nav-h) + 2.25rem)}
+  .hero__inner{grid-template-columns:1fr;gap:2.25rem}
+  .hero__visual{max-width:22rem;justify-self:center;aspect-ratio:1/.92}
+  .hero__visual .conv{height:100%}
+}
+@media (max-width:480px){
+  .hero__cta .btn{width:100%}
+  .wordmark{letter-spacing:.3em}
+}
+
+/* ---------- What is SURCHI ---------- */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2.5rem,6vw,5rem);align-items:center}
+.prose p{color:var(--muted);max-width:36rem}
+.prose p + p{margin-top:1.1rem}
+.prose .note{margin-top:1.75rem;padding-left:1rem;border-left:2px solid var(--green);color:var(--text);font-size:.975rem}
+
+.signals{display:grid;gap:.75rem;max-width:30rem;margin-inline:auto;width:100%}
+.signals li{position:relative;display:flex;align-items:center;gap:1rem;padding:.95rem 1.1rem;border:1px solid var(--line);border-radius:14px;background:var(--panel);transition:border-color .3s}
+.signals li:hover{border-color:rgba(0,247,255,.3)}
+.signals li::after{content:"";position:absolute;left:2.3rem;top:100%;width:1px;height:.75rem;background:linear-gradient(var(--line-2),rgba(0,247,255,.6))}
+.signals .ico{display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:10px;background:rgba(0,247,255,.08);color:var(--cyan)}
+.signals strong{display:block;font:600 .98rem/1.3 var(--font-display);letter-spacing:-.01em}
+.signals span.d{display:block;font-size:.9rem;color:var(--dim);line-height:1.4}
+.stack-core{display:flex;align-items:center;gap:1rem;margin-top:.75rem;padding:1.1rem 1.25rem;border-radius:16px;border:1px solid rgba(0,247,255,.38);background:linear-gradient(135deg,rgba(0,247,255,.11),rgba(123,0,255,.18));box-shadow:0 0 70px -24px rgba(0,247,255,.5)}
+.stack-core .logo{width:2.4rem;height:2.4rem}
+.stack-core strong{display:block;font:600 1rem/1.25 var(--font-display)}
+.stack-core span{display:block;font-size:.9rem;color:var(--muted);line-height:1.4}
+
+@media (max-width:900px){.split{grid-template-columns:1fr;align-items:start}}
+
+/* ---------- Ecosystem (bento) ---------- */
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:1rem;margin-top:clamp(2.5rem,5vw,3.5rem)}
+.cell{display:flex;min-width:0}
+.cell--7{grid-column:span 7}.cell--5{grid-column:span 5}.cell--4{grid-column:span 4}.cell--12{grid-column:span 12}
+.card{
+  position:relative;isolation:isolate;flex:1;display:flex;flex-direction:column;gap:1.5rem;overflow:hidden;
+  padding:clamp(1.25rem,2.4vw,1.75rem);border:1px solid var(--line);border-radius:var(--r-card);
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.012));
+  transition:border-color .35s,transform .4s var(--ease);
+}
+.card::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .4s;
+  background:radial-gradient(340px circle at var(--mx,70%) var(--my,0%),rgba(0,247,255,.12),transparent 65%)}
+.card:hover{border-color:rgba(0,247,255,.32);transform:translateY(-2px)}
+.card:hover::before{opacity:1}
+.card__top{display:flex;flex-direction:column;gap:.9rem}
+.card .ico{display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:12px;border:1px solid rgba(0,247,255,.25);background:rgba(0,247,255,.06);color:var(--cyan)}
+.card h3{font-size:1.3rem;letter-spacing:-.015em}
+.card p{color:var(--muted);font-size:1rem;max-width:30rem}
+.card--wide{flex-direction:row;align-items:center;gap:clamp(1.5rem,4vw,3rem)}
+.card--wide .card__top{flex:1 1 45%}
+.card--wide .viz{flex:1 1 55%}
+.viz{margin-top:auto;min-width:0}
+
+/* viz: rows */
+.viz--rows .vrow{display:grid;grid-template-columns:1.6rem minmax(0,1fr) 20%;gap:.85rem;align-items:center;padding:.65rem 0;border-top:1px solid var(--line)}
+.viz--rows .vrow > b{width:1.6rem;height:1.6rem;border-radius:50%;background:linear-gradient(135deg,rgba(0,247,255,.55),rgba(123,0,255,.55))}
+.viz--rows .vrow:nth-child(3) > b{background:linear-gradient(135deg,rgba(0,255,153,.55),rgba(0,247,255,.4))}
+.viz--rows .vrow:nth-child(4) > b{background:linear-gradient(135deg,rgba(123,0,255,.6),rgba(0,247,255,.3))}
+.viz--rows .stk{display:grid;gap:.4rem}
+.viz i,.viz--code i,.viz--ai i{display:block;height:.5rem;border-radius:99px;background:rgba(255,255,255,.1);width:var(--w,60%)}
+.viz--rows .vrow--head{padding-top:.2rem;border-top:0}
+.viz--rows .vrow--head i{height:.35rem;background:rgba(255,255,255,.06)}
+
+/* viz: code */
+.viz--code{position:relative;display:grid;gap:.6rem;padding:1rem 1.1rem;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.28);overflow:hidden}
+.viz--code i{margin-left:calc(var(--x,0) * 1rem)}
+.viz--code i.ok{background:linear-gradient(90deg,rgba(0,255,153,.6),rgba(0,255,153,.12))}
+.viz--code i.warn{background:linear-gradient(90deg,rgba(123,0,255,.85),rgba(123,0,255,.2))}
+.scan{position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0}
+
+/* viz: svg */
+.viz svg{width:100%;height:auto;overflow:visible}
+.edge{stroke:rgba(255,255,255,.14);stroke-width:1;fill:none}
+.edge--hot{stroke:var(--green);stroke-width:1.4;stroke-dasharray:3 6;opacity:.9}
+.node{fill:#04060B;stroke:rgba(0,247,255,.7);stroke-width:1.3}
+.node--hub{fill:rgba(0,247,255,.14);stroke:var(--cyan)}
+.grid-l{stroke:rgba(255,255,255,.07);stroke-width:1}
+.curve{fill:none;stroke:var(--cyan);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.curve-2{fill:none;stroke:rgba(123,0,255,.9);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2 5}
+
+/* viz: ai */
+.viz--ai{display:grid;gap:1rem}
+.prompt{display:flex;align-items:center;gap:.7rem;padding:.7rem .9rem;border:1px solid var(--line-2);border-radius:12px;background:rgba(0,0,0,.25);color:var(--cyan)}
+.prompt i{flex:1;width:auto;max-width:62%}
+.prompt .caret{width:1.5px;height:1rem;background:var(--cyan);opacity:.9}
+.reply{display:grid;gap:.5rem;padding-left:.25rem}
+
+@media (max-width:960px){
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cell--7,.cell--12{grid-column:span 2}
+  .cell--5,.cell--4{grid-column:span 1}
+}
+@media (max-width:640px){
+  .bento{grid-template-columns:1fr}
+  .cell--7,.cell--12,.cell--5,.cell--4{grid-column:auto}
+  .card--wide{flex-direction:column;align-items:stretch}
+}
+
+/* ---------- Why SURCHI ---------- */
+.why{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2.5rem,6vw,5rem);align-items:start}
+.why__points{margin-top:2.25rem;max-width:36rem}
+.why__points li{padding:1.15rem 0;border-top:1px solid var(--line)}
+.why__points li:last-child{border-bottom:1px solid var(--line)}
+.why__points strong{display:block;font:600 1.05rem/1.35 var(--font-display);letter-spacing:-.01em}
+.why__points span{display:block;margin-top:.25rem;color:var(--muted);font-size:1rem}
+.why__points .win{border-top-color:rgba(0,255,153,.45);background:linear-gradient(90deg,rgba(0,255,153,.07),transparent 70%);padding-left:1rem;margin-top:.5rem;border-radius:0 0 0 0}
+.why__points .win strong{color:var(--green)}
+.why__visual{position:sticky;top:calc(env(safe-area-inset-top,0px) + 6rem)}
+
+.unify{position:relative;width:100%;max-width:30rem;margin-inline:auto;aspect-ratio:1/1;border:1px solid var(--line);border-radius:22px;overflow:hidden;
+  background:radial-gradient(60% 60% at 50% 50%,rgba(123,0,255,.10),transparent 75%),radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px) 0 0/22px 22px}
+.unify__lines{position:absolute;inset:0;width:100%;height:100%}
+.unify__lines line{stroke:rgba(0,247,255,.4);stroke-width:1;stroke-dasharray:3 4;vector-effect:non-scaling-stroke;opacity:0;transition:opacity .6s .55s}
+.is-unified .unify__lines line{opacity:1}
+.unify__hub{position:absolute;left:50%;top:50%;translate:-50% -50%;display:grid;justify-items:center;gap:.35rem;width:5.4rem;padding:.9rem .5rem;border-radius:18px;border:1px solid rgba(0,247,255,.45);background:linear-gradient(135deg,rgba(0,247,255,.14),rgba(123,0,255,.22));font:700 .68rem/1 var(--font-display);letter-spacing:.2em;opacity:0;scale:.7;transition:opacity .6s .35s,scale .8s .3s var(--ease);box-shadow:0 0 50px -14px rgba(0,247,255,.6)}
+.unify__hub .logo{width:1.9rem;height:1.9rem}
+.is-unified .unify__hub{opacity:1;scale:1}
+.chip{position:absolute;left:var(--fx);top:var(--fy);translate:-50% -50%;rotate:var(--rot,0deg);padding:.42rem .7rem;border:1px solid var(--line-2);border-radius:8px;background:#0A0F19;color:var(--muted);font-size:.78rem;font-weight:500;line-height:1.2;white-space:nowrap;
+  transition:left .95s var(--ease),top .95s var(--ease),rotate .95s var(--ease),border-color .6s,color .6s}
+.is-unified .chip{left:var(--ux);top:var(--uy);rotate:0deg;border-color:rgba(0,247,255,.4);color:var(--text)}
+.unify-ctl{display:flex;justify-content:center;margin-top:1.25rem}
+
+@media (max-width:900px){
+  .why{grid-template-columns:1fr}
+  .why__visual{position:static}
+}
+
+/* ---------- How it works ---------- */
+.steps{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem;margin-top:clamp(2.75rem,5vw,4rem)}
+.steps::before,.steps::after{content:"";position:absolute;left:10%;right:10%;top:1.6rem;height:2px;border-radius:2px}
+.steps::before{background:linear-gradient(90deg,var(--line-2),var(--line-2));height:1px;top:calc(1.6rem + .5px)}
+.steps::after{background:linear-gradient(90deg,transparent,var(--cyan),transparent) no-repeat;background-size:30% 100%;background-position:-50% 0;opacity:.85}
+.step{position:relative;text-align:center;padding-inline:.25rem}
+.step .node-i{position:relative;z-index:1;display:grid;place-items:center;width:3.25rem;height:3.25rem;margin:0 auto 1.1rem;border-radius:50%;border:1px solid rgba(0,247,255,.35);background:#070B14;color:var(--cyan);box-shadow:0 0 40px -14px rgba(0,247,255,.55)}
+.step:last-child .node-i{border-color:rgba(0,255,153,.5);color:var(--green);box-shadow:0 0 40px -14px rgba(0,255,153,.55)}
+.step h3{font-size:.85rem;letter-spacing:.14em;font-weight:600}
+.step p{margin-top:.6rem;color:var(--muted);font-size:.95rem;line-height:1.55}
+.honest{margin-top:clamp(2.5rem,5vw,3.5rem);color:var(--dim);font-size:.975rem;max-width:40rem}
+
+@media (max-width:820px){
+  .steps{grid-template-columns:1fr;gap:0}
+  .steps::before,.steps::after{left:1.6rem;right:auto;top:1.6rem;bottom:1.6rem;width:1px;height:auto}
+  .steps::before{width:1px;height:auto;background:var(--line-2)}
+  .steps::after{width:2px;height:auto;background:linear-gradient(180deg,transparent,var(--cyan),transparent) no-repeat;background-size:100% 30%;background-position:0 -50%}
+  .step{display:grid;grid-template-columns:3.25rem 1fr;gap:0 1.1rem;text-align:left;padding:0 0 2rem}
+  .step:last-child{padding-bottom:0}
+  .step .node-i{margin:0;grid-row:span 2}
+  .step p{margin-top:.3rem}
+}
+
+/* ---------- $SUR ---------- */
+.sur{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2.5rem,6vw,5rem);align-items:center}
+.sur__mark{position:relative;display:grid;place-items:center;aspect-ratio:1/1;max-width:26rem;width:100%;margin-inline:auto}
+.sur__rings{position:absolute;inset:0;width:100%;height:100%}
+.sur__word{position:relative;font:700 clamp(3.75rem,2rem + 7vw,7.5rem)/1 var(--font-display);letter-spacing:-.04em;background:linear-gradient(135deg,var(--cyan),#8AA2FF 55%,var(--violet));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--cyan)}
+.sur h2{font-size:clamp(1.7rem,1rem + 2vw,2.5rem)}
+.sur .lead{margin-top:1rem}
+.spec{margin-top:2rem;border-top:1px solid var(--line)}
+.spec div{display:grid;grid-template-columns:9.5rem minmax(0,1fr);gap:1rem;padding:.95rem 0;border-bottom:1px solid var(--line)}
+.spec dt{color:var(--dim);font-size:.95rem}
+.spec dd{font:600 1rem/1.4 var(--font-display);letter-spacing:-.01em;margin:0}
+.fine{margin-top:1.5rem;color:var(--dim);font-size:.9rem;max-width:36rem}
+.fine + .fine{margin-top:.6rem}
+
+@media (max-width:900px){
+  .sur{grid-template-columns:1fr}
+  .sur__mark{max-width:16rem}
+}
+@media (max-width:480px){.spec div{grid-template-columns:1fr;gap:.15rem}}
+
+/* ---------- Audience ---------- */
+.audience{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(2.5rem,5vw,3.5rem)}
+.audience li{padding:0 1.75rem;border-left:1px solid var(--line)}
+.audience li:first-child{padding-left:0;border-left:0}
+.audience li:last-child{padding-right:0}
+.audience .ico{display:grid;place-items:center;width:3rem;height:3rem;margin-bottom:1.25rem;border-radius:50%;border:1px solid var(--line-2);color:var(--cyan)}
+.audience li:nth-child(2) .ico{color:var(--green)}
+.audience li:nth-child(3) .ico{color:#B98CFF}
+.audience h3{font-size:1.2rem}
+.audience p{margin-top:.6rem;color:var(--muted);font-size:1rem}
+
+@media (max-width:960px){
+  .audience{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:2.25rem}
+  .audience li,.audience li:first-child,.audience li:last-child{padding:1.5rem 0 0;border-left:0;border-top:1px solid var(--line)}
+  .audience li:nth-child(odd){padding-right:1.5rem}
+  .audience li:nth-child(even){padding-left:1.5rem;border-left:1px solid var(--line)}
+}
+@media (max-width:560px){
+  .audience{grid-template-columns:1fr;row-gap:1.75rem}
+  .audience li:nth-child(odd),.audience li:nth-child(even){padding:1.5rem 0 0;border-left:0}
+}
+
+/* ---------- Vision ---------- */
+.vision::before{content:"";position:absolute;right:-16rem;top:50%;width:48rem;height:48rem;translate:0 -50%;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(123,0,255,.22),transparent 62%)}
+.vision__ring{position:absolute;right:-10rem;top:50%;translate:0 -50%;width:36rem;height:36rem;border-radius:50%;border:1px solid rgba(255,255,255,.06);pointer-events:none}
+.vision__ring::before,.vision__ring::after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.05)}
+.vision__ring::before{inset:4.5rem}
+.vision__ring::after{inset:9rem;border-color:rgba(0,247,255,.18);border-style:dashed}
+.vision .wrap{position:relative}
+.vision h2{font-size:clamp(2rem,1rem + 3.6vw,4rem);max-width:20em;letter-spacing:-.03em}
+.vision .lead{max-width:40rem}
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem 2.5rem;margin-top:clamp(2.5rem,5vw,4rem)}
+.pillars li{padding-top:1.1rem;border-top:1px solid var(--line-2);position:relative}
+.pillars li::before{content:"";position:absolute;left:0;top:-1px;width:2.5rem;height:1px;background:var(--cyan)}
+.pillars li:nth-child(3n+2)::before{background:var(--green)}
+.pillars li:nth-child(3n)::before{background:#A366FF}
+.pillars h3{font-size:1.12rem;letter-spacing:-.01em}
+.pillars p{margin-top:.5rem;color:var(--muted);font-size:1rem}
+
+@media (max-width:960px){.pillars{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){
+  .pillars{grid-template-columns:1fr;gap:1.6rem}
+  .vision__ring{right:-22rem;opacity:.7}
+}
+
+/* ---------- Roadmap ---------- */
+.road{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.5rem;margin-top:clamp(2.75rem,5vw,4rem)}
+.road::before{content:"";position:absolute;left:0;right:0;top:.85rem;height:1px;background:linear-gradient(90deg,var(--cyan),var(--violet) 65%,rgba(123,0,255,0));opacity:.6}
+.road li{position:relative;padding-top:2.9rem}
+.road .dot{position:absolute;left:0;top:0;display:grid;place-items:center;width:1.75rem;height:1.75rem;border-radius:50%;border:1px solid var(--line-2);background:var(--void);font:600 .75rem/1 var(--font-display);color:var(--cyan)}
+.road h3{font-size:.9rem;letter-spacing:.12em;font-weight:600}
+.road p{margin-top:.6rem;color:var(--muted);font-size:.975rem;line-height:1.55}
+.road-note{margin-top:clamp(2.25rem,4vw,3rem);color:var(--dim);font-size:.95rem}
+
+@media (max-width:900px){
+  .road{grid-template-columns:1fr;gap:0}
+  .road::before{left:.85rem;right:auto;top:.85rem;bottom:.85rem;width:1px;height:auto;background:linear-gradient(180deg,var(--cyan),var(--violet) 65%,rgba(123,0,255,0))}
+  .road li{padding:0 0 2rem 3.1rem}
+  .road li:last-child{padding-bottom:0}
+}
+
+/* ---------- Whitepaper ---------- */
+.wp{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:2rem;align-items:center;overflow:hidden;
+  padding:clamp(1.75rem,4.5vw,3.75rem);border:1px solid var(--line-2);border-radius:26px;
+  background:radial-gradient(70% 90% at 100% 0%,rgba(123,0,255,.18),transparent 65%),linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.01))}
+.wp h2{font-size:clamp(1.8rem,1rem + 2.6vw,3rem)}
+.wp .lead{max-width:32rem}
+.wp .btn{margin-top:2rem}
+.wp__art{width:100%;max-width:22rem;justify-self:center}
+.layer{fill:rgba(0,247,255,.06);stroke:rgba(0,247,255,.4);stroke-width:1}
+.layer--2{fill:rgba(123,0,255,.10);stroke:rgba(163,102,255,.5)}
+.layer--3{fill:rgba(0,255,153,.06);stroke:rgba(0,255,153,.4)}
+.layer--4{fill:rgba(255,255,255,.04);stroke:rgba(255,255,255,.22)}
+@media (max-width:820px){
+  .wp{grid-template-columns:1fr}
+  .wp__art{max-width:15rem;order:-1;justify-self:start}
+}
+
+/* ---------- Final CTA ---------- */
+.cta{text-align:center;padding-block:clamp(5rem,11vw,9rem);isolation:isolate}
+.cta__bg{position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(50% 60% at 50% 50%,rgba(123,0,255,.22),transparent 70%),radial-gradient(35% 40% at 50% 55%,rgba(0,247,255,.10),transparent 70%)}
+.cta__bg::before,.cta__bg::after{content:"";position:absolute;left:50%;top:50%;translate:-50% -50%;border-radius:50%;border:1px solid rgba(255,255,255,.05)}
+.cta__bg::before{width:min(52rem,140vw);aspect-ratio:1/1}
+.cta__bg::after{width:min(34rem,96vw);aspect-ratio:1/1;border-color:rgba(0,247,255,.14)}
+.cta h2{font-size:clamp(2.1rem,1rem + 4vw,4.25rem);max-width:15em;margin-inline:auto;letter-spacing:-.03em}
+.cta .lead{margin-inline:auto;text-align:center}
+.cta .btn{margin-top:2.5rem}
+
+/* ---------- Footer ---------- */
+.site-footer{border-top:1px solid var(--line);padding-block:clamp(3rem,6vw,4.5rem) 2rem;background:linear-gradient(180deg,rgba(255,255,255,.015),transparent)}
+.foot{display:grid;grid-template-columns:minmax(0,1.6fr) repeat(2,minmax(0,1fr));gap:2.5rem}
+.foot p.tag{margin-top:1rem;color:var(--muted);font-size:.975rem;max-width:20rem}
+.foot h2{font:600 .8rem/1 var(--font-display);letter-spacing:.14em;color:var(--dim);margin-bottom:1.1rem}
+.foot ul{display:grid;gap:.15rem}
+.foot .social{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:.6rem;margin-top:1.5rem}
+.foot .social li{flex:none}
+.foot .social a{display:grid;place-items:center;width:2.75rem;height:2.75rem;padding:0;border-radius:12px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);color:var(--muted);transition:color .2s,border-color .25s,background-color .25s,transform .25s var(--ease)}
+.foot .social a:hover{color:var(--cyan);border-color:rgba(0,247,255,.5);background:rgba(0,247,255,.07);transform:translateY(-2px)}
+.foot .social .icon{width:1.2rem;height:1.2rem}
+@media (max-width:380px){.foot .social{gap:.45rem}.foot .social a{width:2.5rem;height:2.5rem}}
+.foot li a{display:inline-block;padding:.3rem 0;color:var(--muted);text-decoration:none;font-size:.975rem;transition:color .2s}
+.foot li a:hover{color:var(--cyan)}
+.foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem 2rem;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);color:var(--dim);font-size:.875rem}
+.foot-bottom p{max-width:42rem}
+@media (max-width:720px){.foot{grid-template-columns:repeat(2,minmax(0,1fr));gap:2.25rem 1.5rem}.foot>div:first-child{grid-column:1/-1}}
+
+/* ---------- Modal ---------- */
+dialog.modal{
+  position:fixed;
+  inset:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px);
+  margin:auto;padding:0;border:0;background:transparent;color:var(--text);
+  width:min(27rem,calc(100vw - 2.5rem));max-width:none;height:fit-content;max-height:calc(100dvh - 2rem);overflow:visible;
+}
+dialog.modal::backdrop{background:rgba(2,4,8,.74);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.modal__panel{position:relative;text-align:center;padding:2.5rem 2rem 2rem;border-radius:var(--r-modal);border:1px solid rgba(0,247,255,.28);overflow-y:auto;max-height:calc(100dvh - 2rem);
+  background:linear-gradient(180deg,rgba(17,23,37,.97),rgba(7,10,18,.99));
+  box-shadow:0 30px 90px -20px rgba(0,0,0,.85),0 0 90px -34px rgba(0,247,255,.55)}
+.modal__panel::before{content:"";position:absolute;left:12%;right:12%;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
+.modal__mark{display:grid;place-items:center;width:3.5rem;height:3.5rem;margin:0 auto 1.4rem;border-radius:16px;border:1px solid rgba(0,247,255,.3);background:rgba(0,247,255,.06)}
+.modal__mark svg{width:1.9rem;height:2.2rem}
+.modal__mark .logo__img{width:2.3rem;height:2.3rem}
+.modal__kicker{font:600 .75rem/1 var(--font-display);letter-spacing:.24em;color:var(--cyan)}
+.modal h2{margin-top:.9rem;font-size:clamp(1.9rem,1.2rem + 2vw,2.4rem)}
+.modal__text{margin-top:1rem;color:var(--muted);font-size:1rem}
+.modal .btn{margin-top:1.9rem;min-width:11rem}
+
+
+/* ---------- Policy sheet ---------- */
+dialog.sheet{
+  position:fixed;
+  inset:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px);
+  margin:auto;padding:0;border:0;background:transparent;color:var(--text);
+  width:min(48rem,calc(100vw - 2rem));height:min(52rem,calc(100dvh - 2rem));max-width:none;max-height:none;overflow:visible;
+}
+dialog.sheet::backdrop{background:rgba(2,4,8,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.sheet__panel{display:flex;flex-direction:column;height:100%;overflow:hidden;border-radius:var(--r-modal);border:1px solid var(--line-2);
+  background:linear-gradient(180deg,rgba(15,20,32,.98),rgba(6,9,16,.99));box-shadow:0 30px 90px -20px rgba(0,0,0,.85),0 0 90px -40px rgba(0,247,255,.4)}
+.sheet__head{flex:none;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;padding:1.35rem 1.5rem 1.15rem;border-bottom:1px solid var(--line)}
+.sheet__head h2{font-size:clamp(1.35rem,1rem + 1.4vw,1.85rem)}
+.sheet__head p{margin-top:.4rem;color:var(--dim);font-size:.9rem}
+.sheet__close{flex:none;display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:10px;border:1px solid var(--line-2);background:rgba(255,255,255,.03);color:var(--text);cursor:pointer;transition:border-color .2s,background-color .2s}
+.sheet__close:hover{border-color:rgba(0,247,255,.5);background:rgba(0,247,255,.07)}
+.sheet__body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:1.5rem 1.5rem 2rem}
+.policy{font-size:1rem;line-height:1.7;color:var(--muted)}
+.policy > *{max-width:40rem}
+.policy p{margin-top:.85rem}
+.policy p:first-child{margin-top:0}
+.policy h3{margin-top:2.25rem;padding-top:1.5rem;border-top:1px solid var(--line);font-size:1.15rem;letter-spacing:-.01em;color:var(--text)}
+.policy h4{margin-top:1.4rem;font:600 .98rem/1.4 var(--font-display);letter-spacing:-.005em;color:var(--text)}
+.policy h3 + p,.policy h4 + p{margin-top:.6rem}
+.policy ul{display:grid;gap:.4rem;margin-top:.75rem}
+.policy li{position:relative;padding-left:1.15rem}
+.policy li::before{content:"";position:absolute;left:.15rem;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--cyan);opacity:.8}
+.policy a{color:var(--cyan);text-underline-offset:3px}
+.policy__contact{display:grid;gap:.3rem;margin-top:1rem;padding:1.1rem 1.25rem;border:1px solid var(--line);border-radius:14px;background:var(--panel);font-style:normal}
+.policy__contact strong{color:var(--text);font-family:var(--font-display);letter-spacing:.08em}
+.policy__end{margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--line);color:var(--dim);font-size:.9rem}
+@media (max-width:640px){
+  dialog.sheet{width:auto;height:auto;margin:0}
+  .sheet__panel{border-radius:0;border-width:0}
+  .sheet__head{padding:1.1rem 1.15rem 1rem}
+  .sheet__body{padding:1.25rem 1.15rem calc(2rem + env(safe-area-inset-bottom,0px))}
+}
+
+/* ---------- Motion (only when the visitor has not asked to reduce it) ---------- */
+@keyframes gridDrift{to{transform:translateY(64px)}}
+@keyframes flowDash{to{stroke-dashoffset:-52}}
+@keyframes ping{0%{transform:scale(1);opacity:.75}100%{transform:scale(3.4);opacity:0}}
 @keyframes spin{to{transform:rotate(360deg)}}
-@keyframes tickIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pulseLive{0%,100%{opacity:1}50%{opacity:0.4}}
-@keyframes scanSweep{0%{transform:translateX(-100%)}100%{transform:translateX(220%)}}
-@keyframes ringSpin{to{transform:rotate(360deg)}}
-@keyframes flashGreen{0%{background:rgba(62,220,154,0.22)}100%{background:transparent}}
-@keyframes flashRed{0%{background:rgba(255,92,122,0.22)}100%{background:transparent}}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes visualIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+@keyframes travelX{to{background-position:150% 0}}
+@keyframes travelY{to{background-position:0 150%}}
+@keyframes breathe{0%{transform:scale(.9);opacity:.7}70%,100%{transform:scale(1.5);opacity:0}}
+@keyframes scan{0%{top:0}100%{top:calc(100% - 2px)}}
+@keyframes draw{from{stroke-dashoffset:400}to{stroke-dashoffset:0}}
+@keyframes shimmer{to{background-position:-200% 0}}
+@keyframes blink{50%{opacity:0}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes dashMove{to{stroke-dashoffset:-36}}
+@keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes modalOut{to{opacity:0;transform:translateY(10px) scale(.97)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeOut{to{opacity:0}}
 
-/* ═══════════ TOPBAR ═══════════ */
-.topbar{
-  position:sticky;top:0;z-index:200;background:rgba(8,9,12,0.82);backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--border);
+@media (prefers-reduced-motion:no-preference){
+  .hero__grid::before{animation:gridDrift 12s linear infinite}
+  .hero [data-in]{opacity:0;animation:rise .95s var(--ease) forwards;animation-delay:calc(var(--i) * 110ms + 120ms)}
+  .hero__visual{opacity:0;animation:visualIn 1.2s var(--ease) .5s forwards}
+  .flow{animation:flowDash 2.6s linear infinite;animation-delay:var(--dl,0s)}
+  .src__pulse{animation:ping 3.4s ease-out infinite;animation-delay:calc(var(--i) * -.7s)}
+  .ring--dash{animation:spin 70s linear infinite}
+  .out-halo{animation:ping 3.4s ease-out infinite;animation-delay:-1.2s}
+  .logo::after{animation:breathe 4.5s ease-out infinite}
+  .steps::after{animation:travelX 5s linear infinite}
+  .card:hover .scan{opacity:.85;animation:scan 2.2s ease-in-out infinite}
+  .card:hover .curve{animation:draw 1.5s ease-out}
+  .card:hover .viz--rows i{background-image:linear-gradient(90deg,rgba(255,255,255,.06),rgba(255,255,255,.3),rgba(255,255,255,.06));background-size:200% 100%;animation:shimmer 1.6s linear infinite}
+  .card:hover .caret{animation:blink 1s steps(1) infinite}
+  .card:hover .edge--hot,.card .flowline{animation:dashMove 1.6s linear infinite}
+  .wp__art .float{animation:float 6s ease-in-out infinite;animation-delay:calc(var(--i) * -1.2s)}
+
+  .js .reveal{opacity:0;translate:0 14px;transition:opacity .9s var(--ease),translate .9s var(--ease);transition-delay:calc(var(--d,0) * 80ms)}
+  .js .reveal.in{opacity:1;translate:none}
+
+  dialog.modal[open] .modal__panel{animation:modalIn .5s cubic-bezier(.16,1,.3,1) both}
+  dialog.modal[open]::backdrop{animation:fadeIn .35s ease both}
+  dialog.modal.is-closing .modal__panel{animation:modalOut .24s ease-in both}
+  dialog.modal.is-closing::backdrop{animation:fadeOut .24s ease-in both}
+  dialog.sheet[open] .sheet__panel{animation:modalIn .5s cubic-bezier(.16,1,.3,1) both}
+  dialog.sheet[open]::backdrop{animation:fadeIn .35s ease both}
+  dialog.sheet.is-closing .sheet__panel{animation:modalOut .24s ease-in both}
+  dialog.sheet.is-closing::backdrop{animation:fadeOut .24s ease-in both}
 }
-.topbar-inner{
-  max-width:1440px;margin:0 auto;padding:0 20px;height:54px;
-  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+@media (prefers-reduced-motion:no-preference) and (max-width:820px){
+  .steps::after{animation-name:travelY}
 }
-.brand{display:flex;align-items:center;gap:10px}
-.brand-icon{width:28px;height:28px;border-radius:8px;background:var(--panel2);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;border:1px solid var(--border-strong)}
-.brand-icon img{width:100%;height:100%;object-fit:cover}
-.brand-text{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:var(--ink);letter-spacing:-0.01em}
-.brand-text span{color:var(--gold)}
-.topbar-tabs{display:flex;align-items:center;gap:2px;flex:1;padding-left:1rem}
-.topbar-tab{font-size:12.5px;font-weight:500;color:var(--muted);padding:7px 12px;border-radius:7px;cursor:pointer;transition:all .15s;white-space:nowrap}
-.topbar-tab:hover{background:var(--panel2);color:var(--ink)}
-.topbar-tab.active{background:var(--gold-tint);color:var(--gold)}
-.topbar-right{display:flex;align-items:center;gap:10px}
-.live-pill{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--green);background:var(--green-tint);padding:5px 10px;border-radius:20px;border:1px solid rgba(62,220,154,0.22)}
-.live-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulseLive 1.6s infinite}
-.sync-txt{font-size:11px;color:var(--muted2)}
-.refresh-btn{
-  display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--ink2);
-  background:var(--panel2);border:1px solid var(--border-strong);padding:6px 12px;border-radius:7px;cursor:pointer;transition:all .15s;
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important}
 }
-.refresh-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-tint)}
-.refresh-btn svg{width:13px;height:13px}
-.refresh-btn.spinning svg{animation:spin .8s linear infinite}
-
-@media(max-width:1024px){ .topbar-tabs{display:none} }
-
-/* ═══════════ SHELL ═══════════ */
-.shell{max-width:1440px;margin:0 auto;padding:0 20px}
-
-/* ═══════════ IDENTITY BAR ═══════════ */
-.identity-bar{
-  position:relative;
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
-  padding:26px 0 20px;border-bottom:1px solid var(--border);
-  overflow:hidden;
-}
-.id-left{display:flex;align-items:center;gap:16px;position:relative;z-index:1}
-.id-mark{
-  width:52px;height:52px;border-radius:50%;position:relative;flex-shrink:0;
-  background:var(--panel2);border:1px solid var(--border-strong);
-  display:flex;align-items:center;justify-content:center;overflow:hidden;
-}
-.id-mark::before{
-  content:'';position:absolute;inset:-1px;border-radius:50%;padding:1px;
-  background:conic-gradient(from 0deg, var(--gold), transparent 30%, transparent 70%, var(--gold));
-  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;mask-composite:exclude;
-  animation:ringSpin 6s linear infinite;
-}
-.id-mark img{width:100%;height:100%;object-fit:cover;border-radius:50%;position:relative;z-index:1}
-.id-name-row{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
-.id-name{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-0.01em}
-.id-ticker{font-size:12px;font-weight:600;color:var(--gold);background:var(--gold-tint);padding:3px 9px;border-radius:6px;border:1px solid rgba(228,185,92,0.22)}
-.id-badges{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
-.id-badge{font-size:10.5px;font-weight:600;color:var(--muted);background:var(--panel2);border:1px solid var(--border);padding:3px 8px;border-radius:6px;display:flex;align-items:center;gap:4px}
-.id-badge.verified{color:var(--green);background:var(--green-tint);border-color:rgba(62,220,154,0.2)}
-.id-badge.bronze{color:var(--bronze);background:var(--bronze-tint);border-color:rgba(201,123,74,0.24)}
-
-.id-right{display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap;position:relative;z-index:1}
-.price-block{text-align:right;position:relative}
-.price-main{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;line-height:1}
-.price-change-inline{display:inline-flex;align-items:center;gap:4px;font-size:12.5px;font-weight:700;padding:2px 8px;border-radius:6px;margin-left:8px;vertical-align:middle}
-.price-change-inline.up{color:var(--green);background:var(--green-tint)}
-.price-change-inline.down{color:var(--red);background:var(--red-tint)}
-.price-sub{font-size:11px;color:var(--muted2);margin-top:5px}
-.price-scan{position:absolute;bottom:-8px;left:0;right:0;height:1px;background:var(--border);overflow:hidden}
-.price-scan::after{content:'';position:absolute;top:0;left:0;width:30%;height:100%;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:scanSweep 3.2s ease-in-out infinite}
-
-.mint-row{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--muted)}
-.mint-addr{color:var(--ink2);background:var(--panel2);padding:5px 9px;border-radius:6px;border:1px solid var(--border)}
-.copy-btn{
-  font-size:10.5px;font-weight:600;color:var(--muted);background:var(--panel2);border:1px solid var(--border-strong);
-  padding:5px 10px;border-radius:6px;cursor:pointer;transition:all .15s;
-}
-.copy-btn:hover{border-color:var(--gold);color:var(--gold)}
-.copy-btn.copied{border-color:var(--green);color:var(--green);background:var(--green-tint)}
-
-.mint-line{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:14px 0;border-bottom:1px solid var(--border)}
-
-.ext-link{
-  font-size:11.5px;font-weight:600;color:var(--muted);border:1px solid var(--border-strong);
-  padding:7px 13px;border-radius:7px;text-decoration:none;transition:all .15s;white-space:nowrap;background:var(--panel2);
-}
-.ext-link:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-tint)}
-.ext-link.primary{background:var(--gold);color:#0A0B10;border-color:var(--gold);font-weight:700;box-shadow:0 0 0 1px rgba(228,185,92,0.32), 0 6px 20px -6px var(--gold-glow)}
-.ext-link.primary:hover{background:#9D92FF}
-
-/* PLATFORM REDIRECT DROPDOWN */
-.platform-panel{padding:12px 0 16px;border-bottom:1px solid var(--border)}
-.platform-toggle{
-  display:flex;align-items:center;gap:8px;
-  font-size:11px;font-weight:700;color:var(--ink2);text-transform:uppercase;letter-spacing:0.08em;
-  background:none;border:none;cursor:pointer;padding:6px 0;width:100%;justify-content:flex-start;
-}
-.platform-toggle:hover{color:var(--gold)}
-.platform-grid{display:none;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
-.platform-grid.open{display:grid}
-.platform-item{
-  display:flex;align-items:center;justify-content:center;gap:6px;
-  font-size:12px;font-weight:600;color:var(--ink2);
-  background:var(--panel2);border:1px solid var(--border-strong);border-radius:8px;
-  padding:10px 10px;text-decoration:none;transition:all .15s;text-align:center;
-}
-.platform-item:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-tint);transform:translateY(-1px)}
-.platform-emoji{font-size:14px;line-height:1}
-
-@media(max-width:1024px){.platform-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:640px){.platform-grid{grid-template-columns:repeat(2,1fr)}}
-
-/* ═══════════ TICKER STRIP ═══════════ */
-.ticker-strip{display:grid;grid-template-columns:repeat(6,1fr);border-bottom:1px solid var(--border);background:var(--panel)}
-.tick-cell{padding:14px 18px;border-right:1px solid var(--border)}
-.tick-cell:last-child{border-right:none}
-.tick-lbl{font-size:9.5px;font-weight:700;color:var(--muted2);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:5px}
-.tick-val{font-family:'IBM Plex Mono',monospace;font-size:14.5px;font-weight:600;color:var(--ink)}
-.tick-val.g{color:var(--green)}
-.tick-val.r{color:var(--red)}
-.tick-val.v{color:var(--gold)}
-.tick-sub{font-size:10px;color:var(--muted2);margin-top:3px}
-
-@media(max-width:1024px){.ticker-strip{grid-template-columns:repeat(3,1fr)}.tick-cell:nth-child(3){border-right:none}}
-@media(max-width:640px){.ticker-strip{grid-template-columns:repeat(2,1fr)}.tick-cell:nth-child(2n){border-right:none}}
-
-/* ═══════════ TERMINAL GRID ═══════════ */
-.terminal-grid{display:grid;grid-template-columns:270px 1fr 320px;gap:0;border-bottom:1px solid var(--border);min-height:520px}
-.term-col{border-right:1px solid var(--border)}
-.term-col:last-child{border-right:none}
-.term-col-head{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--border);background:var(--panel)}
-.term-col-title{font-size:10px;font-weight:700;color:var(--ink2);text-transform:uppercase;letter-spacing:0.07em}
-.term-col-meta{font-size:9.5px;color:var(--muted2);font-weight:500}
-
-/* LEFT: token facts */
-.fact-list{padding:2px 0}
-.fact-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--border)}
-.fact-row:last-child{border-bottom:none}
-.fact-k{font-size:11px;color:var(--muted);font-weight:500}
-.fact-v{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink);font-weight:600;text-align:right}
-.fact-v.g{color:var(--green)}
-.fact-v.v{color:var(--gold)}
-
-.dist-block{padding:14px 14px;border-bottom:1px solid var(--border)}
-.dist-title{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px}
-.dist-row{margin-bottom:10px}
-.dist-row:last-child{margin-bottom:0}
-.dist-top{display:flex;justify-content:space-between;font-size:11px;margin-bottom:5px}
-.dist-name{color:var(--ink2);font-weight:500}
-.dist-pct{font-weight:700;font-family:'IBM Plex Mono',monospace;font-size:11px}
-.dist-track{height:6px;background:var(--panel2);border-radius:3px;overflow:hidden;border:1px solid var(--border)}
-.dist-fill{height:100%;border-radius:3px}
-
-/* CENTER: chart */
-.chart-tabs-row{display:flex;border-bottom:1px solid var(--border)}
-.chart-tab{font-size:11px;font-weight:600;color:var(--muted);padding:10px 16px;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s}
-.chart-tab:hover{color:var(--ink)}
-.chart-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
-.chart-embed-wrap{height:440px;background:var(--panel)}
-.chart-embed-wrap iframe{width:100%;height:100%;border:none;display:block}
-
-.flow-section{border-top:1px solid var(--border)}
-.flow-head{padding:11px 14px;border-bottom:1px solid var(--border)}
-.flow-title{font-size:10px;font-weight:700;color:var(--ink2);text-transform:uppercase;letter-spacing:0.07em}
-.flow-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-.flow-cell{padding:14px;border-right:1px solid var(--border);text-align:center}
-.flow-cell:last-child{border-right:none}
-.flow-window{font-size:9.5px;font-weight:700;color:var(--muted2);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px}
-.flow-bars{display:flex;height:6px;border-radius:3px;overflow:hidden;margin-bottom:8px;background:var(--panel2);border:1px solid var(--border)}
-.flow-buy{background:var(--green)}
-.flow-sell{background:var(--red)}
-.flow-counts{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600}
-.flow-counts .b{color:var(--green)}
-.flow-counts .s{color:var(--red)}
-
-/* RIGHT: holders / distribution facts */
-.side-list{padding:2px 0}
-.side-row{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--border);font-size:11.5px}
-.side-row:hover{background:var(--panel2)}
-.side-k{color:var(--muted);font-weight:500}
-.side-v{font-family:'IBM Plex Mono',monospace;color:var(--ink);font-weight:600}
-
-.pair-card{padding:14px;border-bottom:1px solid var(--border)}
-.pair-card:last-child{border-bottom:none}
-.pair-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.pair-name{font-size:12px;font-weight:700;color:var(--ink)}
-.pair-dex{font-size:9.5px;font-weight:600;color:var(--gold);background:var(--gold-tint);padding:2px 7px;border-radius:5px;text-transform:capitalize}
-.pair-stats{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted)}
-.pair-stats .val{color:var(--ink2);font-family:'IBM Plex Mono',monospace;font-weight:600}
-
-.notice-box{margin:14px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--panel2);font-size:11px;color:var(--muted);line-height:1.6}
-.notice-box b{color:var(--ink2)}
-
-.pairs-toggle-btn{
-  display:flex;align-items:center;justify-content:center;gap:6px;width:100%;
-  padding:11px 14px;font-size:11.5px;font-weight:600;color:var(--gold);
-  background:var(--gold-tint);border:none;border-top:1px solid var(--border);
-  cursor:pointer;transition:all .15s;
-}
-.pairs-toggle-btn:hover{background:rgba(228,185,92,0.16)}
-.pairs-toggle-btn svg{width:12px;height:12px;transition:transform .2s}
-.pairs-toggle-btn.expanded svg{transform:rotate(180deg)}
-
-/* ═══════════ RECENT TRADES ═══════════ */
-.trades-section{border-bottom:1px solid var(--border)}
-.trades-head{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--border);background:var(--panel)}
-.trades-title{font-size:10px;font-weight:700;color:var(--ink2);text-transform:uppercase;letter-spacing:0.07em}
-.trades-live{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;color:var(--green)}
-.trades-scroll{max-height:360px;overflow-y:auto}
-.trades-table{width:100%;border-collapse:collapse}
-.trades-table thead th{
-  position:sticky;top:0;background:var(--panel);
-  font-size:9.5px;font-weight:700;color:var(--muted2);text-transform:uppercase;letter-spacing:0.06em;
-  text-align:left;padding:8px 14px;border-bottom:1px solid var(--border);
-}
-.trades-table td{padding:8px 14px;font-size:11px;border-bottom:1px solid var(--border);font-family:'IBM Plex Mono',monospace;color:var(--ink2);white-space:nowrap}
-.trades-table tbody tr:last-child td{border-bottom:none}
-.trade-row-new.buy{animation:flashGreen 1.4s ease}
-.trade-row-new.sell{animation:flashRed 1.4s ease}
-.side-tag{font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:5px;display:inline-block;letter-spacing:0.02em}
-.side-tag.buy{color:var(--green);background:var(--green-tint)}
-.side-tag.sell{color:var(--red);background:var(--red-tint)}
-.trades-empty{padding:2rem;text-align:center;color:var(--muted2);font-size:11.5px}
-
-/* ═══════════ ENGINE STRIP ═══════════ */
-.engine-strip{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--border)}
-.engine-cell{padding:20px 20px;border-right:1px solid var(--border);text-align:center}
-.engine-cell:last-child{border-right:none}
-.engine-lbl{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:9px}
-.engine-val{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:700}
-.engine-sub{font-size:10.5px;color:var(--muted2);margin-top:5px}
-
-@media(max-width:768px){.engine-strip{grid-template-columns:1fr}.engine-cell{border-right:none;border-bottom:1px solid var(--border)}.engine-cell:last-child{border-bottom:none}}
-
-/* ═══════════ LOADING / ERROR ═══════════ */
-.loading-row{display:flex;align-items:center;justify-content:center;gap:8px;padding:2.5rem 1rem;color:var(--muted2);font-size:11.5px}
-.spinner{width:14px;height:14px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite}
-.error-row{padding:1.5rem;text-align:center;color:var(--red);font-size:11.5px;background:var(--red-tint)}
-
-/* ═══════════ FOOTER ═══════════ */
-.footer{text-align:center;padding:1.8rem 0;font-size:11px;color:var(--muted2)}
-.footer .hl{color:var(--gold);font-weight:600}
-.footer-row{margin-bottom:4px}
-.footer-brand{display:inline-flex;align-items:center;gap:7px;justify-content:center}
-.footer-logo{width:16px;height:16px;border-radius:5px;object-fit:cover;border:1px solid var(--border-strong)}
-.footer-socials{display:flex;align-items:center;justify-content:center;gap:10px;margin:14px 0 10px}
-.social-icon{
-  display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:9px;
-  background:var(--panel2);border:1px solid var(--border-strong);color:var(--muted);
-  transition:all .15s;text-decoration:none;
-}
-.social-icon svg{width:16px;height:16px}
-.social-icon:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-tint);transform:translateY(-2px)}
-
-@media(max-width:1024px){
-  .terminal-grid{grid-template-columns:1fr}
-  .term-col{border-right:none;border-bottom:1px solid var(--border)}
-  .term-col:last-child{border-bottom:none}
-  .flow-grid{grid-template-columns:repeat(2,1fr)}
-  .flow-cell:nth-child(2){border-right:none}
-}
-
-@media(max-width:640px){
-  body{font-size:12.5px}
-  .shell{padding:0 14px}
-  .topbar-inner{padding:0 14px}
-  .brand-text{font-size:13px}
-  .live-pill{font-size:10px;padding:4px 8px}
-  .sync-txt{display:none}
-  .refresh-btn{font-size:11px;padding:6px 9px}
-
-  .identity-bar{flex-direction:column;align-items:stretch;width:100%;gap:14px}
-  .id-left{width:100%}
-  .id-right{width:100%;justify-content:flex-start}
-  .price-block{text-align:left;width:100%}
-  .price-main{font-size:23px}
-
-  .mint-line{flex-direction:column;align-items:stretch}
-  .mint-row{flex-wrap:wrap;width:100%}
-  .mint-addr{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;vertical-align:middle}
-
-  .platform-toggle{font-size:11px}
-
-  .ticker-strip{grid-template-columns:repeat(2,1fr)}
-  .tick-cell{padding:11px 12px;border-right:1px solid var(--border)}
-  .tick-cell:nth-child(2n){border-right:none}
-  .tick-val{font-size:13px}
-
-  .term-col-head{padding:10px 12px}
-  .fact-row,.dist-block,.side-row,.pair-card{padding-left:12px;padding-right:12px}
-
-  .chart-embed-wrap{height:320px}
-  .flow-grid{grid-template-columns:repeat(2,1fr)}
-
-  .trades-table td, .trades-table th{padding:8px 10px;font-size:10px}
-
-  .engine-cell{padding:16px 12px}
-  .engine-val{font-size:18px}
-
-  .footer{padding:1.2rem 14px;font-size:10px;word-break:break-all}
-}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
-<body>
 
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="brand">
-      <div class="brand-icon">
-        <img src="https://raw.githubusercontent.com/surchiai/Html/refs/heads/main/public/Logo.png" alt="SURCHI"/>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Shared SVG symbols -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gLogo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00F7FF"/><stop offset="1" stop-color="#7B00FF"/></linearGradient>
+  </defs>
+  <symbol id="logo-mark" viewBox="6 3 20 24">
+    <path d="M22 10.5C22 8 19.5 6.5 16 6.5S10 8.2 10 10.5c0 5 12 3 12 8.5 0 2.5-2.5 4.5-6 4.5s-6-1.7-6-4" fill="none" stroke="url(#gLogo)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="22" cy="10.5" r="1.7" fill="#00FF99"/><circle cx="10" cy="19.5" r="1.7" fill="#00FF99"/>
+  </symbol>
+  <symbol id="i-screener" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5.5 5.5M8 12.8v-2.3M10.5 12.8V8M13 12.8v-3.3"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5.5c0 4.2 2.9 7.9 7 9.5 4.1-1.6 7-5.3 7-9.5V6l-7-3z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3.5" y="6.5" width="17" height="12" rx="2.5"/><path d="M3.5 10h17"/><circle cx="16.5" cy="14.5" r="1"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="m7.5 14 3.5-4 3 2.5L19 7"/></symbol>
+  <symbol id="i-ai" viewBox="0 0 24 24"><path d="m12 3.5 1.8 4.7 4.7 1.8-4.7 1.8L12 16.5l-1.8-4.7L5.5 10l4.7-1.8L12 3.5z"/><path d="m18.5 16 .8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8.8-2z"/></symbol>
+  <symbol id="i-chain" viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="2"/><circle cx="18.5" cy="6" r="2"/><circle cx="18.5" cy="18" r="2"/><path d="m7.4 11.2 9.2-4.4M7.4 12.8l9.2 4.4"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3-8.5 5 8.5 5 8.5-5L12 3z"/><path d="m3.5 12 8.5 5 8.5-5M3.5 16l8.5 5 8.5-5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-trader" viewBox="0 0 24 24"><path d="m3.5 17 5-5 3.5 3.5L20.5 7"/><path d="M15 7h5.5v5.5"/></symbol>
+  <symbol id="i-research" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5.5 5.5"/><circle cx="8.5" cy="9" r=".9"/><circle cx="12.5" cy="12" r=".9"/><path d="m9.2 9.6 2.6 1.8"/></symbol>
+  <symbol id="i-builder" viewBox="0 0 24 24"><path d="m8.5 8-4 4 4 4M15.5 8l4 4-4 4M13.5 5.5l-3 13"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4M9.5 12h5M9.5 15.5h5"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m4 8 8 5.8L20 8"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+  <symbol id="i-discord" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></symbol>
+  <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></symbol>
+  <symbol id="i-medium" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></symbol>
+</svg>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header" id="top">
+  <div class="wrap bar">
+    <a class="brand" href="#main" aria-label="SURCHI — back to top">
+      <span class="logo"><svg aria-hidden="true"><use href="#logo-mark"/></svg><img class="logo__img" src="https://raw.githubusercontent.com/ifeanyichukwu-i/Real-surchi-Dex-screener-/refs/heads/main/public/Logo.png" alt="" width="64" height="64" decoding="async"></span>
+      <span>SURCHI</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="#intelligence">Intelligence</a>
+      <a href="#sur">$SUR</a>
+      <a href="#vision">Vision</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#whitepaper">Whitepaper</a>
+    </nav>
+    <button class="btn btn--primary btn--sm" type="button" data-open-app>LAUNCH APP</button>
+    <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="menu" id="menu">
+    <nav aria-label="Mobile">
+      <ul>
+        <li style="--i:0"><a href="#ecosystem">Ecosystem <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li style="--i:1"><a href="#intelligence">Intelligence <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li style="--i:2"><a href="#sur">$SUR <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li style="--i:3"><a href="#vision">Vision <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li style="--i:4"><a href="#roadmap">Roadmap <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+        <li style="--i:5"><a href="#whitepaper">Whitepaper <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      </ul>
+    </nav>
+    <button class="btn btn--primary btn--lg" type="button" data-open-app>LAUNCH APP</button>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- ===================== 1. HERO ===================== -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__glow"></div>
+    <div class="hero__grid"></div>
+    <canvas id="hero-canvas"></canvas>
+  </div>
+  <div class="wrap">
+    <div class="hero__inner">
+      <div class="hero__copy">
+        <h1 class="hero__title" id="hero-title">
+          <span class="wordmark" data-in style="--i:0"><span class="logo"><svg aria-hidden="true"><use href="#logo-mark"/></svg><img class="logo__img" src="https://raw.githubusercontent.com/ifeanyichukwu-i/Real-surchi-Dex-screener-/refs/heads/main/public/Logo.png" alt="" width="64" height="64" decoding="async"></span>SURCHI</span>
+          <span class="sr-only"> – </span>
+          <span class="hero__headline" data-in style="--i:1">The Intelligence Layer for On-Chain Markets.</span>
+        </h1>
+        <p class="lead" data-in style="--i:2">SURCHI unifies live blockchain indexing, AI contract security, wallet intelligence, and professional market analytics into one decentralized intelligence ecosystem for users moving across chains.</p>
+        <div class="hero__cta" data-in style="--i:3">
+          <button class="btn btn--primary btn--lg" type="button" data-open-app>LAUNCH APP</button>
+          <a class="btn btn--ghost btn--lg" href="#intelligence">EXPLORE SURCHI</a>
+        </div>
       </div>
-      <div class="brand-text">SURCHI <span>Terminal</span></div>
-    </div>
-    <div class="topbar-tabs">
-      <div class="topbar-tab active">Overview</div>
-      <div class="topbar-tab">Holders</div>
-      <div class="topbar-tab">Transactions</div>
-      <div class="topbar-tab">Tokenomics</div>
-      <div class="topbar-tab">Analytics</div>
-    </div>
-    <div class="topbar-right">
-      <div class="live-pill"><span class="live-dot"></span>LIVE</div>
-      <span class="sync-txt" id="lastUpdated">Syncing…</span>
-      <button class="refresh-btn" id="refreshBtn" onclick="fetchAll()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 0 1 14-5M20 12a8 8 0 0 1-14 5"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>
-        Refresh
-      </button>
+
+      <div class="hero__visual">
+        <svg class="conv" viewBox="0 0 520 520" role="img" aria-label="Illustration: several blockchain data streams converge into one SURCHI intelligence node">
+          <defs>
+            <linearGradient id="gIn" gradientUnits="userSpaceOnUse" x1="36" y1="0" x2="340" y2="0"><stop offset="0" stop-color="#00F7FF" stop-opacity=".15"/><stop offset="1" stop-color="#00F7FF"/></linearGradient>
+            <linearGradient id="gOut" gradientUnits="userSpaceOnUse" x1="340" y1="0" x2="500" y2="0"><stop offset="0" stop-color="#00F7FF"/><stop offset="1" stop-color="#00FF99"/></linearGradient>
+            <radialGradient id="gCore" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#7B00FF" stop-opacity=".5"/><stop offset="1" stop-color="#7B00FF" stop-opacity="0"/></radialGradient>
+          </defs>
+          <circle cx="340" cy="260" r="170" fill="url(#gCore)"/>
+          <circle class="ring ring--faint" cx="340" cy="260" r="138"/>
+          <circle class="ring ring--dash" cx="340" cy="260" r="98"/>
+          <circle class="ring" cx="340" cy="260" r="62"/>
+
+          <g>
+            <path class="trace" d="M36 60C200 60 180 260 340 260"/>
+            <path class="trace" d="M36 160C190 160 200 260 340 260"/>
+            <path class="trace" d="M36 260C150 260 220 260 340 260"/>
+            <path class="trace" d="M36 360C190 360 200 260 340 260"/>
+            <path class="trace" d="M36 460C200 460 180 260 340 260"/>
+            <path class="trace" d="M340 260H500"/>
+          </g>
+          <g>
+            <path class="flow" style="--dl:0s"    d="M36 60C200 60 180 260 340 260"/>
+            <path class="flow" style="--dl:-.5s"  d="M36 160C190 160 200 260 340 260"/>
+            <path class="flow" style="--dl:-1s"   d="M36 260C150 260 220 260 340 260"/>
+            <path class="flow" style="--dl:-1.5s" d="M36 360C190 360 200 260 340 260"/>
+            <path class="flow" style="--dl:-2s"   d="M36 460C200 460 180 260 340 260"/>
+            <path class="flow flow--out" style="--dl:-.8s" d="M340 260H500"/>
+          </g>
+          <g>
+            <g style="--i:0"><circle class="src__pulse" style="--i:0" cx="36" cy="60" r="5"/><circle class="src__dot" cx="36" cy="60" r="5"/></g>
+            <g><circle class="src__pulse" style="--i:1" cx="36" cy="160" r="5"/><circle class="src__dot" cx="36" cy="160" r="5"/></g>
+            <g><circle class="src__pulse" style="--i:2" cx="36" cy="260" r="5"/><circle class="src__dot" cx="36" cy="260" r="5"/></g>
+            <g><circle class="src__pulse" style="--i:3" cx="36" cy="360" r="5"/><circle class="src__dot" cx="36" cy="360" r="5"/></g>
+            <g><circle class="src__pulse" style="--i:4" cx="36" cy="460" r="5"/><circle class="src__dot" cx="36" cy="460" r="5"/></g>
+          </g>
+          <circle class="out-halo" cx="500" cy="260" r="6"/>
+          <circle class="out-dot" cx="500" cy="260" r="5"/>
+          <circle class="core" cx="340" cy="260" r="40"/>
+          <use class="mk" href="#logo-mark" x="316" y="236" width="48" height="48"/>
+          <image class="mk-img" href="https://raw.githubusercontent.com/ifeanyichukwu-i/Real-surchi-Dex-screener-/refs/heads/main/public/Logo.png" x="314" y="234" width="52" height="52" preserveAspectRatio="xMidYMid meet"/>
+        </svg>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="shell">
+<!-- ===================== 2. WHAT IS SURCHI ===================== -->
+<section class="section" id="intelligence" data-nav="intelligence" aria-labelledby="what-title">
+  <div class="wrap split">
+    <div class="reveal">
+      <h2 id="what-title" class="h2">One Intelligence Layer. Multiple Market Signals.</h2>
+      <div class="prose" style="margin-top:1.5rem">
+        <p>Blockchain markets are spread across block explorers, decentralized exchanges, analytics dashboards, wallets, security tools and a growing number of chains. Each one shows part of the picture.</p>
+        <p>SURCHI is an ecosystem designed to bring these layers together, so market data, wallet activity and contract security can be read side by side instead of tab by tab.</p>
+        <p class="note">SURCHI is under development. Capabilities are introduced progressively as they are ready.</p>
+      </div>
+    </div>
 
-  <!-- IDENTITY BAR -->
-  <div class="identity-bar">
-    <div class="id-left">
-      <div class="id-mark">
-        <img src="https://raw.githubusercontent.com/surchiai/Html/refs/heads/main/public/Logo.png" alt="SURCHI logo"/>
+    <div class="reveal" style="--d:2">
+      <ul class="signals" aria-label="Signals that SURCHI brings together">
+        <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-screener"/></svg></span><div><strong>Market signals</strong><span class="d">Assets, pairs and market activity</span></div></li>
+        <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-wallet"/></svg></span><div><strong>Wallet activity</strong><span class="d">On-chain movements worth noticing</span></div></li>
+        <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span><div><strong>Contract security</strong><span class="d">Risk information from contract analysis</span></div></li>
+        <li><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-ai"/></svg></span><div><strong>AI interpretation</strong><span class="d">Context for complex blockchain data</span></div></li>
+      </ul>
+      <div class="signals stack-core" style="max-width:30rem;margin-inline:auto">
+        <span class="logo"><svg aria-hidden="true"><use href="#logo-mark"/></svg><img class="logo__img" src="https://raw.githubusercontent.com/ifeanyichukwu-i/Real-surchi-Dex-screener-/refs/heads/main/public/Logo.png" alt="" width="64" height="64" decoding="async"></span>
+        <div><strong>SURCHI intelligence layer</strong><span>One connected view of every signal</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 3. ECOSYSTEM ===================== -->
+<section class="section" id="ecosystem" data-nav="ecosystem" aria-labelledby="eco-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 id="eco-title" class="h2">Six intelligence layers. One ecosystem.</h2>
+      <p class="lead">Each part of SURCHI covers one layer of on-chain intelligence and is designed to work with the others.</p>
+    </div>
+
+    <div class="bento">
+      <div class="cell cell--7 reveal" style="--d:0">
+        <article class="card">
+          <div class="card__top">
+            <span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-screener"/></svg></span>
+            <h3>DEX Screener</h3>
+            <p>Discover and analyze digital assets and market activity across supported networks.</p>
+          </div>
+          <div class="viz viz--rows" aria-hidden="true">
+            <div class="vrow vrow--head"><span></span><i style="--w:30%"></i><i style="--w:70%"></i></div>
+            <div class="vrow"><b></b><div class="stk"><i style="--w:52%"></i><i style="--w:30%"></i></div><i style="--w:80%"></i></div>
+            <div class="vrow"><b></b><div class="stk"><i style="--w:40%"></i><i style="--w:26%"></i></div><i style="--w:64%"></i></div>
+            <div class="vrow"><b></b><div class="stk"><i style="--w:60%"></i><i style="--w:34%"></i></div><i style="--w:72%"></i></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="cell cell--5 reveal" style="--d:1">
+        <article class="card">
+          <div class="card__top">
+            <span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
+            <h3>AI Contract Security</h3>
+            <p>Analyze smart contracts and surface relevant security information and risk signals.</p>
+          </div>
+          <div class="viz viz--code" aria-hidden="true">
+            <span class="scan"></span>
+            <i style="--w:42%"></i><i style="--w:66%;--x:1"></i><i class="ok" style="--w:52%;--x:1"></i><i style="--w:34%;--x:2"></i><i class="warn" style="--w:58%;--x:2"></i><i style="--w:28%;--x:1"></i>
+          </div>
+        </article>
+      </div>
+
+      <div class="cell cell--4 reveal" style="--d:0">
+        <article class="card">
+          <div class="card__top">
+            <span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-wallet"/></svg></span>
+            <h3>Wallet Intelligence</h3>
+            <p>Monitor wallet activity and identify meaningful on-chain movements.</p>
+          </div>
+          <div class="viz" aria-hidden="true">
+            <svg viewBox="0 0 240 110">
+              <path class="edge" d="M120 55 40 22M120 55 30 78M120 55 92 96M120 55 198 20M120 55 214 74"/>
+              <path class="edge edge--hot" d="M120 55 198 20"/>
+              <circle class="node" cx="40" cy="22" r="5"/><circle class="node" cx="30" cy="78" r="5"/><circle class="node" cx="92" cy="96" r="5"/>
+              <circle class="node" cx="198" cy="20" r="5"/><circle class="node" cx="214" cy="74" r="5"/>
+              <circle class="node node--hub" cx="120" cy="55" r="11"/>
+            </svg>
+          </div>
+        </article>
+      </div>
+
+      <div class="cell cell--4 reveal" style="--d:1">
+        <article class="card">
+          <div class="card__top">
+            <span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg></span>
+            <h3>Professional Charting</h3>
+            <p>Provide advanced market visualization and analytical tools.</p>
+          </div>
+          <div class="viz" aria-hidden="true">
+            <svg viewBox="0 0 240 110">
+              <path class="grid-l" d="M0 20H240M0 50H240M0 80H240"/>
+              <defs><linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00F7FF" stop-opacity=".22"/><stop offset="1" stop-color="#00F7FF" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0 84C24 80 34 60 56 62S88 84 110 66 148 26 172 36 210 22 240 14V110H0Z" fill="url(#gArea)"/>
+              <path class="curve" pathLength="400" stroke-dasharray="400" d="M0 84C24 80 34 60 56 62S88 84 110 66 148 26 172 36 210 22 240 14"/>
+              <path class="curve-2" d="M0 96C40 92 70 88 110 82S180 60 240 48"/>
+            </svg>
+          </div>
+        </article>
+      </div>
+
+      <div class="cell cell--4 reveal" style="--d:2">
+        <article class="card">
+          <div class="card__top">
+            <span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-ai"/></svg></span>
+            <h3>SURCHI AI</h3>
+            <p>Use AI-assisted intelligence to help users interpret blockchain and market data.</p>
+          </div>
+          <div class="viz viz--ai" aria-hidden="true">
+            <div class="prompt"><svg class="icon" style="width:1.1rem;height:1.1rem"><use href="#i-ai"/></svg><i style="--w:100%"></i><span class="caret"></span></div>
+            <div class="reply"><i style="--w:92%"></i><i style="--w:78%"></i><i style="--w:56%"></i></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="cell cell--12 reveal" style="--d:0">
+        <article class="card card--wide">
+          <div class="card__top">
+            <span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-chain"/></svg></span>
+            <h3>Multi-Chain Intelligence</h3>
+            <p>Bring blockchain data and market signals together across supported ecosystems.</p>
+          </div>
+          <div class="viz" aria-hidden="true">
+            <svg viewBox="0 0 360 150">
+              <path class="edge" d="M40 34 180 75M40 116 180 75M112 75 180 75M320 34 180 75M320 116 180 75M250 75 180 75"/>
+              <path class="edge edge--hot flowline" d="M40 34 180 75M40 116 180 75M112 75 180 75"/>
+              <path class="edge flowline" style="stroke:rgba(123,0,255,.9);stroke-width:1.3;stroke-dasharray:3 6" d="M180 75 320 34M180 75 320 116M180 75 250 75"/>
+              <circle class="node" cx="40" cy="34" r="6"/><circle class="node" cx="40" cy="116" r="6"/><circle class="node" cx="112" cy="75" r="6"/>
+              <circle class="node" cx="320" cy="34" r="6"/><circle class="node" cx="320" cy="116" r="6"/><circle class="node" cx="250" cy="75" r="6"/>
+              <circle class="node node--hub" cx="180" cy="75" r="16"/>
+              <use class="mk" href="#logo-mark" x="170" y="63" width="20" height="24"/>
+              <image class="mk-img" href="https://raw.githubusercontent.com/ifeanyichukwu-i/Real-surchi-Dex-screener-/refs/heads/main/public/Logo.png" x="167" y="62" width="26" height="26" preserveAspectRatio="xMidYMid meet"/>
+            </svg>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 4. WHY SURCHI ===================== -->
+<section class="section" id="why" data-nav="intelligence" aria-labelledby="why-title">
+  <div class="wrap why">
+    <div class="reveal">
+      <h2 id="why-title" class="h2">Crypto markets move fast. Information is fragmented.</h2>
+      <ul class="why__points">
+        <li><strong>Data lives in many places.</strong><span>Prices, liquidity, wallets and contracts are spread across separate platforms and chains.</span></li>
+        <li><strong>Traders switch between tools.</strong><span>Following a single asset can mean moving between several different apps.</span></li>
+        <li><strong>Blockchain activity is hard to read.</strong><span>Raw on-chain data takes time and context to interpret.</span></li>
+        <li><strong>Security sits apart from markets.</strong><span>Contract analysis and market intelligence are often separate steps.</span></li>
+        <li class="win"><strong>SURCHI unifies these layers.</strong><span>One ecosystem for market, wallet, security and AI-assisted analysis.</span></li>
+      </ul>
+    </div>
+
+    <div class="why__visual reveal" style="--d:2">
+      <div class="unify" id="unify">
+        <svg class="unify__lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="50" y1="50" x2="50" y2="13"/><line x1="50" y1="50" x2="78" y2="31"/><line x1="50" y1="50" x2="78" y2="69"/>
+          <line x1="50" y1="50" x2="50" y2="87"/><line x1="50" y1="50" x2="22" y2="69"/><line x1="50" y1="50" x2="22" y2="31"/>
+        </svg>
+        <div class="unify__hub"><span class="logo"><svg aria-hidden="true"><use href="#logo-mark"/></svg><img class="logo__img" src="https://raw.githubusercontent.com/ifeanyichukwu-i/Real-surchi-Dex-screener-/refs/heads/main/public/Logo.png" alt="" width="64" height="64" decoding="async"></span><span>SURCHI</span></div>
+        <span class="chip" style="--fx:30%;--fy:12%;--ux:50%;--uy:13%;--rot:-4deg">Block explorers</span>
+        <span class="chip" style="--fx:72%;--fy:26%;--ux:78%;--uy:31%;--rot:3deg">DEXs</span>
+        <span class="chip" style="--fx:34%;--fy:44%;--ux:78%;--uy:69%;--rot:-2deg">Analytics</span>
+        <span class="chip" style="--fx:70%;--fy:60%;--ux:50%;--uy:87%;--rot:4deg">Wallets</span>
+        <span class="chip" style="--fx:30%;--fy:74%;--ux:22%;--uy:69%;--rot:-3deg">Security tools</span>
+        <span class="chip" style="--fx:66%;--fy:90%;--ux:22%;--uy:31%;--rot:2deg">Multiple chains</span>
+      </div>
+      <div class="unify-ctl">
+        <button class="btn btn--ghost btn--sm" id="unify-btn" type="button"><span class="label">Unify with SURCHI</span></button>
+      </div>
+      <p class="sr-only" id="unify-status" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 5. HOW IT WORKS ===================== -->
+<section class="section" id="how" data-nav="intelligence" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 id="how-title" class="h2">How SURCHI works</h2>
+      <p class="lead">From raw blockchain activity to decisions that users make for themselves.</p>
+    </div>
+
+    <ol class="steps">
+      <li class="step reveal" style="--d:0"><span class="node-i"><svg class="icon" aria-hidden="true"><use href="#i-chain"/></svg></span><h3>BLOCKCHAINS</h3><p>Activity is created on-chain across supported networks.</p></li>
+      <li class="step reveal" style="--d:1"><span class="node-i"><svg class="icon" aria-hidden="true"><use href="#i-activity"/></svg></span><h3>LIVE DATA</h3><p>SURCHI indexes blockchain data as it is produced.</p></li>
+      <li class="step reveal" style="--d:2"><span class="node-i"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg></span><h3>INTELLIGENCE</h3><p>Indexed data is organized into market, wallet and contract signals.</p></li>
+      <li class="step reveal" style="--d:3"><span class="node-i"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg></span><h3>ANALYSIS</h3><p>Charts, AI-assisted interpretation and security analysis add context.</p></li>
+      <li class="step reveal" style="--d:4"><span class="node-i"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span><h3>ACTION</h3><p>Users review the signals and make their own decisions.</p></li>
+    </ol>
+    <p class="honest reveal">This page shows no live statistics or simulated market data. The animation above illustrates how the pieces connect, nothing more.</p>
+  </div>
+</section>
+
+<!-- ===================== 6. $SUR ===================== -->
+<section class="section" id="sur" data-nav="sur" aria-labelledby="sur-title">
+  <div class="wrap sur">
+    <div class="sur__mark reveal" aria-hidden="true">
+      <svg class="sur__rings" viewBox="0 0 400 400">
+        <circle cx="200" cy="200" r="190" fill="none" stroke="rgba(255,255,255,.06)"/>
+        <circle cx="200" cy="200" r="150" fill="none" stroke="rgba(0,247,255,.22)" stroke-dasharray="2 8"/>
+        <circle cx="200" cy="200" r="108" fill="none" stroke="rgba(123,0,255,.35)"/>
+        <circle cx="200" cy="10" r="4" fill="#00FF99"/><circle cx="350" cy="200" r="3" fill="#00F7FF"/><circle cx="92" cy="308" r="3" fill="#7B00FF"/>
+      </svg>
+      <span class="sur__word">$SUR</span>
+    </div>
+
+    <div class="reveal" style="--d:2">
+      <h2 id="sur-title">The token of the SURCHI ecosystem</h2>
+      <p class="lead">$SUR is intended to serve as the ecosystem token of SURCHI. Its role within the platform will be defined and documented as SURCHI's features are implemented. SURCHI does not claim utility that has not been built.</p>
+      <dl class="spec">
+        <div><dt>Token</dt><dd>$SUR</dd></div>
+        <div><dt>Network</dt><dd>Solana</dd></div>
+        <div><dt>Total supply</dt><dd>420,000 $SUR</dd></div>
+      </dl>
+      <p class="fine">This site shows no price, market capitalization or trading data for $SUR. Details are published only when they are official and verifiable, so always confirm token information through official SURCHI channels.</p>
+      <p class="fine">Nothing on this page is financial advice, an offer, or a promise of returns.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 7. AUDIENCE ===================== -->
+<section class="section" id="audience" aria-labelledby="aud-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 id="aud-title" class="h2">Built for anyone who works with on-chain markets.</h2>
+    </div>
+    <ul class="audience">
+      <li class="reveal" style="--d:0"><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-trader"/></svg></span><h3>Traders</h3><p>Market discovery, charts and market intelligence.</p></li>
+      <li class="reveal" style="--d:1"><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-research"/></svg></span><h3>On-Chain Researchers</h3><p>Blockchain activity and wallet intelligence.</p></li>
+      <li class="reveal" style="--d:2"><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-builder"/></svg></span><h3>Web3 Builders</h3><p>Contract and ecosystem intelligence.</p></li>
+      <li class="reveal" style="--d:3"><span class="ico"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg></span><h3>Digital Asset Users</h3><p>A unified environment for discovering and monitoring blockchain markets.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== 8. VISION ===================== -->
+<section class="section vision" id="vision" data-nav="vision" aria-labelledby="vision-title">
+  <div class="vision__ring" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="reveal">
+      <h2 id="vision-title">Building the Intelligence Layer for the Next Generation of On-Chain Markets.</h2>
+      <p class="lead">The long-term direction is simple to state and demanding to build: one place to understand what is happening on-chain, across chains, with security and AI-assisted analysis built in. The work is staged, and every claim stays tied to what is actually delivered.</p>
+    </div>
+    <ul class="pillars">
+      <li class="reveal" style="--d:0"><h3>Unified blockchain intelligence</h3><p>Market, wallet and contract information in one connected environment.</p></li>
+      <li class="reveal" style="--d:1"><h3>AI-assisted market analysis</h3><p>Helping users interpret complex data faster and with more context.</p></li>
+      <li class="reveal" style="--d:2"><h3>Better on-chain visibility</h3><p>Making blockchain activity easier to see, follow and understand.</p></li>
+      <li class="reveal" style="--d:0"><h3>Cross-chain intelligence</h3><p>Reading signals across supported ecosystems instead of one chain at a time.</p></li>
+      <li class="reveal" style="--d:1"><h3>Advanced security analysis</h3><p>Surfacing relevant risk signals from smart contract analysis.</p></li>
+      <li class="reveal" style="--d:2"><h3>An expanding intelligence ecosystem</h3><p>Growing the tools, chains and integrations SURCHI supports over time.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== 9. ROADMAP ===================== -->
+<section class="section" id="roadmap" data-nav="roadmap" aria-labelledby="road-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 id="road-title" class="h2">A clear direction, built in stages.</h2>
+      <p class="lead">Five stages describe how SURCHI is being developed, from core infrastructure to a wider ecosystem.</p>
+    </div>
+    <ol class="road">
+      <li class="reveal" style="--d:0"><span class="dot">1</span><h3>FOUNDATION</h3><p>Core SURCHI infrastructure and ecosystem architecture.</p></li>
+      <li class="reveal" style="--d:1"><span class="dot">2</span><h3>MARKET INTELLIGENCE</h3><p>Market discovery, analytics and blockchain indexing.</p></li>
+      <li class="reveal" style="--d:2"><span class="dot">3</span><h3>AI &amp; SECURITY</h3><p>AI-assisted intelligence and contract security capabilities.</p></li>
+      <li class="reveal" style="--d:3"><span class="dot">4</span><h3>ADVANCED ANALYTICS</h3><p>Wallet intelligence, advanced charting and deeper on-chain analysis.</p></li>
+      <li class="reveal" style="--d:4"><span class="dot">5</span><h3>ECOSYSTEM EXPANSION</h3><p>Expansion across supported chains, tools and integrations.</p></li>
+    </ol>
+    <p class="road-note reveal">The roadmap shows sequence and direction. It does not commit to dates.</p>
+  </div>
+</section>
+
+<!-- ===================== 10. WHITEPAPER ===================== -->
+<section class="section" id="whitepaper" data-nav="whitepaper" aria-labelledby="wp-title">
+  <div class="wrap">
+    <div class="wp reveal">
+      <div>
+        <h2 id="wp-title">Explore the SURCHI Architecture</h2>
+        <p class="lead">The whitepaper goes deeper into the project's architecture, ecosystem and vision: how SURCHI's intelligence layers fit together and where the project is heading.</p>
+        <a class="btn btn--primary btn--lg" href="https://whitepaper.surchi.xyz/" target="_blank" rel="noopener noreferrer">READ WHITEPAPER<span class="sr-only"> (opens in a new tab)</span></a>
+      </div>
+      <svg class="wp__art" viewBox="0 0 320 250" aria-hidden="true">
+        <g class="float" style="--i:3"><path class="layer layer--4" d="M60 176 160 136 260 176 160 216Z"/></g>
+        <g class="float" style="--i:2"><path class="layer layer--3" d="M60 136 160 96 260 136 160 176Z"/></g>
+        <g class="float" style="--i:1"><path class="layer layer--2" d="M60 96 160 56 260 96 160 136Z"/></g>
+        <g class="float" style="--i:0"><path class="layer" d="M60 56 160 16 260 56 160 96Z"/></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 11. FINAL CTA ===================== -->
+<section class="section cta" aria-labelledby="cta-title">
+  <div class="cta__bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="reveal">
+      <h2 id="cta-title">The Future of On-Chain Intelligence Starts Here.</h2>
+      <p class="lead">Explore the SURCHI ecosystem and follow the development of a unified intelligence layer for blockchain markets.</p>
+      <button class="btn btn--primary btn--lg" type="button" data-open-app>LAUNCH APP</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== 13. FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#main" aria-label="SURCHI — back to top"><span class="logo"><svg aria-hidden="true"><use href="#logo-mark"/></svg><img class="logo__img" src="https://raw.githubusercontent.com/ifeanyichukwu-i/Real-surchi-Dex-screener-/refs/heads/main/public/Logo.png" alt="" width="64" height="64" decoding="async"></span><span>SURCHI</span></a>
+        <p class="tag">Decentralized intelligence for on-chain markets.</p>
+        <ul class="social" aria-label="SURCHI on social platforms and contact">
+          <li><a href="https://x.com/surchicoin" target="_blank" rel="noopener noreferrer" aria-label="SURCHI on X" title="X"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-x"/></svg></a></li>
+          <li><a href="https://discord.gg/uH2Jp3yu5h" target="_blank" rel="noopener noreferrer" aria-label="SURCHI on Discord" title="Discord"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-discord"/></svg></a></li>
+          <li><a href="https://t.me/Surchicommunity" target="_blank" rel="noopener noreferrer" aria-label="SURCHI on Telegram" title="Telegram"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-telegram"/></svg></a></li>
+          <li><a href="https://medium.com/@surchicoin" target="_blank" rel="noopener noreferrer" aria-label="SURCHI on Medium" title="Medium"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-medium"/></svg></a></li>
+          <li><a href="https://github.com/surchiai" target="_blank" rel="noopener noreferrer" aria-label="SURCHI on GitHub" title="GitHub"><svg class="icon icon--fill" aria-hidden="true"><use href="#i-github"/></svg></a></li>
+          <li><a href="mailto:support@surchi.xyz" aria-label="Email SURCHI support at support@surchi.xyz" title="support@surchi.xyz"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></a></li>
+        </ul>
       </div>
       <div>
-        <div class="id-name-row">
-          <span class="id-name">SURCHI</span>
-          <span class="id-ticker">$SUR</span>
-        </div>
-        <div class="id-badges">
-          <span class="id-badge">Solana · SPL-9</span>
-          <span class="id-badge verified">✓ Mint Revoked</span>
-          <span class="id-badge bronze">0% Team Allocation</span>
-        </div>
+        <h2>Explore</h2>
+        <ul>
+          <li><a href="#ecosystem">Ecosystem</a></li>
+          <li><a href="#sur">$SUR</a></li>
+          <li><a href="#vision">Vision</a></li>
+          <li><a href="#roadmap">Roadmap</a></li>
+          <li><a href="#whitepaper">Whitepaper</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Legal</h2>
+        <ul>
+          <li><a href="#privacy-policy" data-sheet="policy">Privacy Policy</a></li>
+          <li><a href="#sur">Token</a></li>
+        </ul>
       </div>
     </div>
-
-    <div class="id-right">
-      <div class="price-block">
-        <div class="price-main mono" id="heroPrice">···</div>
-        <div id="priceChangeInline" class="price-change-inline up" style="display:none"></div>
-        <div class="price-sub" id="priceSubline">Loading price feed…</div>
-        <div class="price-scan"></div>
-      </div>
+    <div class="foot-bottom">
+      <p>&copy; 2026 SURCHI. All rights reserved.</p>
+      <p>Information on this site is for general purposes only and is not financial advice.</p>
     </div>
   </div>
+</footer>
 
-  <!-- MINT LINE -->
-  <div class="mint-line">
-    <div class="mint-row">
-      MINT&nbsp;<span class="mint-addr mono" id="mintDisplay">C8QShhzBJEA769SYTKRfg2fFFNP3dxqaKumApMi4huhi</span>
-      <button class="copy-btn" id="copyBtn" onclick="copyMint()">Copy</button>
+<!-- ===================== PRIVACY POLICY PANEL ===================== -->
+<dialog class="sheet" id="privacy-policy" aria-labelledby="policy-title">
+  <div class="sheet__panel">
+    <div class="sheet__head">
+      <div>
+        <h2 id="policy-title">SURCHI Privacy Policy</h2>
+        <p>Last Updated: September 14, 2026</p>
+      </div>
+      <button class="sheet__close" type="button" aria-label="Close privacy policy"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
     </div>
-    <a class="ext-link primary" href="https://raydium.io/swap/C8QShhzBJEA769SYTKRfg2fFFNP3dxqaKumApMi4huhi" target="_blank" rel="noopener">Trade on Raydium</a>
+    <div class="sheet__body policy" tabindex="0" role="region" aria-label="Privacy policy text">
+          <p>SURCHI (“SURCHI,” “we,” “us,” or “our”) respects your privacy and is committed to protecting information that may be associated with your use of the SURCHI platform, website, applications, and related services (collectively, the “Services”).</p>
+          <p>This Privacy Policy explains what information we may collect, how we use it, when it may be shared, and the choices available to you when using SURCHI.</p>
+          <p>By accessing or using the Services, you acknowledge that you have read and understood this Privacy Policy.</p>
+          <h3>1. Information We Collect</h3>
+          <h4>1.1 Information You Provide</h4>
+          <p>Depending on how you use SURCHI, we may collect information that you voluntarily provide, including:</p>
+          <ul>
+            <li>Email address or other contact information when you contact us.</li>
+            <li>Information submitted through forms, support requests, or community channels.</li>
+            <li>Account or profile information where account functionality is available.</li>
+            <li>Feedback, messages, or other communications you send to us.</li>
+          </ul>
+          <p>We do not require you to provide personal information simply to view publicly available blockchain market data.</p>
+          <h4>1.2 Blockchain and Wallet Information</h4>
+          <p>SURCHI may provide blockchain analytics, wallet intelligence, token information, transaction monitoring, portfolio tools, and related features.</p>
+          <p>Public blockchain networks are inherently transparent. When you connect or enter a public wallet address, information associated with that address may be publicly accessible on the applicable blockchain.</p>
+          <p>Depending on the features you use, SURCHI may process publicly available information such as:</p>
+          <ul>
+            <li>Public wallet addresses.</li>
+            <li>Token balances.</li>
+            <li>Token holdings.</li>
+            <li>Blockchain transactions.</li>
+            <li>Token transfers.</li>
+            <li>Smart-contract interactions.</li>
+            <li>Publicly available transaction timestamps and amounts.</li>
+            <li>Public blockchain activity and related analytics.</li>
+          </ul>
+          <p>SURCHI does not obtain or store your private keys, seed phrases, recovery phrases, or wallet passwords.</p>
+          <p>You are responsible for protecting your wallet credentials and private keys.</p>
+          <h4>1.3 Automatically Collected Information</h4>
+          <p>When you access our Services, certain technical information may be collected automatically, including:</p>
+          <ul>
+            <li>IP address.</li>
+            <li>Browser type and version.</li>
+            <li>Device type.</li>
+            <li>Operating system.</li>
+            <li>Approximate geographic information derived from technical data.</li>
+            <li>Pages or features accessed.</li>
+            <li>Date and time of access.</li>
+            <li>Diagnostic, performance, and security information.</li>
+          </ul>
+          <p>We may use cookies, local storage, or similar technologies to maintain functionality, remember preferences, improve performance, and help protect the Services.</p>
+          <h3>2. How We Use Information</h3>
+          <p>We may use information we collect to:</p>
+          <ul>
+            <li>Provide, maintain, and improve SURCHI.</li>
+            <li>Provide blockchain analytics and market intelligence.</li>
+            <li>Display token, wallet, transaction, and market information.</li>
+            <li>Operate portfolio and wallet-related features.</li>
+            <li>Improve our AI-powered features and services.</li>
+            <li>Detect, prevent, and investigate fraud, abuse, security incidents, and unauthorized activity.</li>
+            <li>Monitor and improve platform performance.</li>
+            <li>Respond to support requests and communications.</li>
+            <li>Understand how users interact with our Services.</li>
+            <li>Develop new features and products.</li>
+            <li>Comply with applicable legal obligations.</li>
+            <li>Protect the rights, property, and safety of SURCHI, our users, and others.</li>
+          </ul>
+          <h3>3. AI Features</h3>
+          <p>SURCHI may provide artificial intelligence (“AI”) features for market analysis, contract analysis, security-related insights, token intelligence, or other purposes.</p>
+          <p>Information submitted to an AI-powered feature may be processed by SURCHI and/or third-party AI service providers necessary to provide that feature.</p>
+          <p>AI-generated information is provided for informational purposes and should not be considered financial, investment, legal, or other professional advice.</p>
+          <p>You should independently verify important information before making financial or trading decisions.</p>
+          <h3>4. Blockchain Data</h3>
+          <p>SURCHI may obtain information from public blockchain networks and third-party blockchain data providers.</p>
+          <p>Because blockchain transactions are generally permanent and publicly accessible, information recorded on a blockchain may not be capable of being deleted, modified, or removed by SURCHI.</p>
+          <p>SURCHI does not control the underlying blockchain networks.</p>
+          <h3>5. Third-Party Services</h3>
+          <p>SURCHI may use third-party service providers to operate and improve the Services. These providers may include services for:</p>
+          <ul>
+            <li>Blockchain data and indexing.</li>
+            <li>Market and token information.</li>
+            <li>Analytics.</li>
+            <li>Hosting and infrastructure.</li>
+            <li>AI processing.</li>
+            <li>Security.</li>
+            <li>Authentication.</li>
+            <li>Communications and email.</li>
+            <li>Payment or other integrations where applicable.</li>
+          </ul>
+          <p>Third-party providers may process information according to their own privacy policies and terms.</p>
+          <p>SURCHI is not responsible for the privacy practices of third-party websites, applications, wallets, exchanges, blockchain networks, or services that you access through or alongside SURCHI.</p>
+          <h3>6. Wallet Connections</h3>
+          <p>SURCHI may allow users to connect compatible cryptocurrency wallets to access certain features.</p>
+          <p>When connecting a wallet:</p>
+          <ul>
+            <li>SURCHI does not request your seed phrase or private key.</li>
+            <li>You should never provide your seed phrase or private key to SURCHI or anyone claiming to represent SURCHI.</li>
+            <li>Wallet addresses and blockchain activity may be visible to SURCHI when necessary to provide requested features.</li>
+            <li>Transactions are generally executed through the wallet and applicable blockchain network, not by SURCHI taking custody of your assets.</li>
+          </ul>
+          <p>SURCHI does not take custody of your cryptocurrency unless a specific service explicitly states otherwise.</p>
+          <h3>7. Cookies and Local Storage</h3>
+          <p>SURCHI may use cookies, local storage, session technologies, or similar technologies to:</p>
+          <ul>
+            <li>Remember user preferences.</li>
+            <li>Maintain application functionality.</li>
+            <li>Store interface settings.</li>
+            <li>Improve security.</li>
+            <li>Analyze platform usage.</li>
+            <li>Improve performance.</li>
+          </ul>
+          <p>You may be able to control cookies through your browser settings. Disabling certain technologies may affect the functionality of some SURCHI features.</p>
+          <h3>8. Data Sharing</h3>
+          <p>We do not sell your personal information for money.</p>
+          <p>We may share information when reasonably necessary with:</p>
+          <ul>
+            <li>Service providers that operate parts of the SURCHI infrastructure.</li>
+            <li>Security and fraud-prevention providers.</li>
+            <li>Professional advisers where necessary.</li>
+            <li>Government authorities or law-enforcement agencies when legally required.</li>
+            <li>Other parties when necessary to protect SURCHI, our users, or the public.</li>
+            <li>Parties involved in a merger, acquisition, financing, restructuring, or sale of assets.</li>
+          </ul>
+          <p>We may also use aggregated or de-identified information that cannot reasonably be used to identify an individual for analytics, research, development, or other legitimate purposes.</p>
+          <h3>9. Data Security</h3>
+          <p>We use reasonable technical and organizational measures designed to protect information against unauthorized access, alteration, disclosure, or destruction.</p>
+          <p>However, no website, application, blockchain network, or internet transmission can be guaranteed to be completely secure.</p>
+          <p>You are responsible for maintaining the security of your devices, accounts, wallet credentials, private keys, and recovery phrases.</p>
+          <h3>10. Data Retention</h3>
+          <p>We retain information only for as long as reasonably necessary for the purposes described in this Privacy Policy, including providing the Services, maintaining security, resolving disputes, complying with legal obligations, and enforcing agreements.</p>
+          <p>Public blockchain data may remain permanently available on the applicable blockchain network and is outside our control.</p>
+          <h3>11. Your Privacy Rights</h3>
+          <p>Depending on your location and applicable law, you may have rights regarding your personal information, which may include:</p>
+          <ul>
+            <li>Requesting access to personal information we hold about you.</li>
+            <li>Requesting correction of inaccurate information.</li>
+            <li>Requesting deletion of certain personal information.</li>
+            <li>Requesting restriction of certain processing.</li>
+            <li>Objecting to certain processing.</li>
+            <li>Requesting a copy of certain information.</li>
+            <li>Withdrawing consent where processing is based on consent.</li>
+          </ul>
+          <p>These rights may be subject to legal limitations and exceptions.</p>
+          <p>To submit a privacy-related request, contact us using the contact information provided below.</p>
+          <h3>12. Children's Privacy</h3>
+          <p>SURCHI is not intended for children who are below the minimum age required to use the Services under applicable law.</p>
+          <p>We do not knowingly collect personal information from children in violation of applicable privacy laws.</p>
+          <p>If you believe a child has provided personal information to SURCHI, please contact us so that we can take appropriate action.</p>
+          <h3>13. International Users</h3>
+          <p>SURCHI may use infrastructure and service providers located in countries other than your country of residence.</p>
+          <p>As a result, information may be processed or stored internationally, subject to applicable data-protection laws and appropriate safeguards where required.</p>
+          <h3>14. Cryptocurrency and Financial Disclaimer</h3>
+          <p>SURCHI provides technology, blockchain analytics, market information, AI-generated insights, and related tools.</p>
+          <p>Nothing provided through SURCHI constitutes financial, investment, trading, legal, tax, or other professional advice.</p>
+          <p>Cryptocurrency and digital assets are highly volatile and involve significant risk, including the potential loss of your entire investment.</p>
+          <p>You are solely responsible for your own decisions and should conduct independent research and seek qualified professional advice where appropriate.</p>
+          <h3>15. Changes to This Privacy Policy</h3>
+          <p>We may update this Privacy Policy from time to time to reflect changes to our Services, technology, legal requirements, or privacy practices.</p>
+          <p>When we make changes, we may update the “Last Updated” date at the beginning of this policy.</p>
+          <p>Your continued use of the Services after an updated Privacy Policy becomes effective constitutes acceptance of the revised policy to the extent permitted by applicable law.</p>
+          <h3>16. Contact Us</h3>
+          <p>If you have questions, concerns, or requests regarding this Privacy Policy or SURCHI's privacy practices, please contact us through the official SURCHI communication channels.</p>
+          <address class="policy__contact">
+            <strong>SURCHI</strong>
+            <span>Website: <a href="https://www.surchi.xyz" target="_blank" rel="noopener noreferrer">https://www.surchi.xyz</a></span>
+            <span>Privacy inquiries: <a href="mailto:support@surchi.xyz">support@surchi.xyz</a></span>
+          </address>
+          <p class="policy__end">&copy; 2026 SURCHI. All rights reserved.</p>
+    </div>
   </div>
+</dialog>
 
-  <!-- PLATFORM REDIRECT DROPDOWN -->
-  <div class="platform-panel">
-    <button class="platform-toggle" id="platformToggle" onclick="togglePlatforms()">
-      <span>View $SUR on</span>
-      <svg id="platformChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="width:15px;height:15px;transition:transform .2s">
-        <path d="M6 9l6 6 6-6"/>
-      </svg>
-    </button>
-    <div class="platform-grid" id="platformGrid">
-      <a class="platform-item" href="https://gmgn.ai/sol/token/C8QShhzBJEA769SYTKRfg2fFFNP3dxqaKumApMi4huhi" target="_blank" rel="noopener"><span class="platform-emoji">🌵</span>GMGN</a>
-      <a class="platform-item" href="https://axiom.trade/t/C8QShhzBJEA769SYTKRfg2fFFNP3dxqaKumApMi4huhi" target="_blank" rel="noopener"><span class="platform-emoji">▲</span>Axiom</a>
-      <a class="platform-item" href="https://birdeye.so/token/C8QShhzBJEA769SYTKRfg2fFFNP3dxqaKumApMi4huhi?chain=solana" target="_blank" rel="noopener"><span class="platform-emoji">👁</span>Birdeye</a>
-      <a class="platform-item" href="https://solscan.io/token/C8QShhzBJEA769SYTKRfg2fFFNP3dxqaKumApMi4huhi" target="_blank" rel="noopener"><span class="platform-emoji">🔎</span>Solscan</a>
-      <a class="platform-item" href="https://www.geckoterminal.com/solana/pools/C8QShhzBJEA769SYTKRfg2fFFNP3dxqaKumApMi4huhi" target="_blank" rel="noopener"><span class="platform-emoji">🦎</span>GeckoTerminal</a>
-      <a class="platform-item" href="https://photon-sol.tinyastro.io/en/lp/C8QShhzBJEA769SYTKRfg2fFFNP3dxqaKumApMi4huhi" target="_blank" rel="noopener"><span class="platform-emoji">⚡</span>Photon</a>
-      <a class="platform-item" href="https://rugcheck.xyz/tokens/C8QShhzBJEA769SYTKRfg2fFFNP3dxqaKumApMi4huhi" target="_blank" rel="noopener"><span class="platform-emoji">🛡</span>RugCheck</a>
-    </div>
+<!-- ===================== MODAL ===================== -->
+<dialog class="modal" id="notice" aria-labelledby="notice-title" aria-describedby="notice-text">
+  <div class="modal__panel">
+    <div class="modal__mark"><svg aria-hidden="true"><use href="#logo-mark"/></svg><img class="logo__img" src="https://raw.githubusercontent.com/ifeanyichukwu-i/Real-surchi-Dex-screener-/refs/heads/main/public/Logo.png" alt="" width="64" height="64" decoding="async"></div>
+    <p class="modal__kicker" id="notice-kicker">SURCHI APP</p>
+    <h2 id="notice-title">Coming Soon</h2>
+    <p class="modal__text" id="notice-text">The SURCHI intelligence platform is currently being prepared for launch.</p>
+    <button class="btn btn--primary" type="button" id="notice-close" autofocus>GOT IT</button>
   </div>
+</dialog>
 
-  <!-- TICKER STRIP -->
-  <div class="ticker-strip" id="tickerStrip">
-    <div class="tick-cell"><div class="tick-lbl">Market Cap</div><div class="tick-val" id="tMcap">···</div></div>
-    <div class="tick-cell"><div class="tick-lbl">FDV</div><div class="tick-val" id="tFdv">···</div></div>
-    <div class="tick-cell"><div class="tick-lbl">Liquidity</div><div class="tick-val" id="tLiq">···</div></div>
-    <div class="tick-cell"><div class="tick-lbl">Volume 24h</div><div class="tick-val" id="tVol">···</div></div>
-    <div class="tick-cell"><div class="tick-lbl">Txns 24h</div><div class="tick-val" id="tTxns">···</div></div>
-    <div class="tick-cell"><div class="tick-lbl">Pairs</div><div class="tick-val v" id="tPairs">···</div></div>
-  </div>
-
-  <!-- TERMINAL GRID -->
-  <div class="terminal-grid">
-
-    <!-- LEFT COLUMN -->
-    <div class="term-col">
-      <div class="term-col-head">
-        <span class="term-col-title">Token Facts</span>
-      </div>
-      <div class="fact-list">
-        <div class="fact-row"><span class="fact-k">Network</span><span class="fact-v">Solana</span></div>
-        <div class="fact-row"><span class="fact-k">Standard</span><span class="fact-v">SPL Token</span></div>
-        <div class="fact-row"><span class="fact-k">Total Supply</span><span class="fact-v">420,000</span></div>
-        <div class="fact-row"><span class="fact-k">Mint Authority</span><span class="fact-v g">Revoked</span></div>
-        <div class="fact-row"><span class="fact-k">Freeze Authority</span><span class="fact-v g">Revoked</span></div>
-        <div class="fact-row"><span class="fact-k">Team Allocation</span><span class="fact-v v">0%</span></div>
-      </div>
-      <div class="dist-block">
-        <div class="dist-title">Tokenomics Split</div>
-        <div class="dist-row">
-          <div class="dist-top"><span class="dist-name">Fair Launch</span><span class="dist-pct" style="color:var(--gold)">55%</span></div>
-          <div class="dist-track"><div class="dist-fill" style="width:55%;background:var(--gold)"></div></div>
-        </div>
-        <div class="dist-row">
-          <div class="dist-top"><span class="dist-name">Liquidity Pool</span><span class="dist-pct" style="color:var(--green)">25%</span></div>
-          <div class="dist-track"><div class="dist-fill" style="width:25%;background:var(--green)"></div></div>
-        </div>
-        <div class="dist-row">
-          <div class="dist-top"><span class="dist-name">Marketing / Growth</span><span class="dist-pct" style="color:var(--bronze)">20%</span></div>
-          <div class="dist-track"><div class="dist-fill" style="width:20%;background:var(--bronze)"></div></div>
-        </div>
-      </div>
-      <div class="notice-box">
-        <b>Note:</b> On-chain holder distribution requires an indexer connection (e.g. Solscan/Helius API). This panel shows only verified tokenomics and live market data — no placeholder figures.
-      </div>
-    </div>
-
-    <!-- CENTER COLUMN -->
-    <div class="term-col">
-      <div class="chart-tabs-row">
-        <div class="chart-tab active">Price Chart</div>
-      </div>
-      <div class="chart-embed-wrap" id="chartEmbed">
-        <div class="loading-row"><span class="spinner"></span>Loading live chart…</div>
-      </div>
-
-      <div class="flow-section">
-        <div class="flow-head"><span class="flow-title">Buy / Sell Flow</span></div>
-        <div class="flow-grid" id="flowGrid">
-          <div class="loading-row" style="grid-column:1/-1"><span class="spinner"></span>Loading flow data…</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RIGHT COLUMN -->
-    <div class="term-col">
-      <div class="term-col-head">
-        <span class="term-col-title">Live Pairs</span>
-        <span class="term-col-meta" id="pairsMeta"></span>
-      </div>
-      <div id="pairsList">
-        <div class="loading-row"><span class="spinner"></span>Fetching pairs…</div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- RECENT TRADES (real-time buy/sell order feed) -->
-  <div class="trades-section">
-    <div class="trades-head">
-      <span class="trades-title">Recent Trades</span>
-      <span class="trades-live"><span class="live-dot"></span><span id="tradesSync">Live</span></span>
-    </div>
-    <div class="trades-scroll">
-      <table class="trades-table">
-        <thead>
-          <tr>
-            <th>Time</th>
-            <th>Side</th>
-            <th>Amount SUR</th>
-            <th>Price</th>
-            <th>Total (USD)</th>
-            <th>Trader</th>
-          </tr>
-        </thead>
-        <tbody id="tradesBody">
-          <tr><td colspan="6"><div class="loading-row"><span class="spinner"></span>Loading recent trades…</div></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- ENGINE STRIP -->
-  <div class="engine-strip">
-    <div class="engine-cell">
-      <div class="engine-lbl">24h Price Change</div>
-      <div class="engine-val" id="eChange24">···</div>
-      <div class="engine-sub">vs. prior 24h</div>
-    </div>
-    <div class="engine-cell">
-      <div class="engine-lbl">6h Price Change</div>
-      <div class="engine-val" id="eChange6">···</div>
-      <div class="engine-sub">vs. prior 6h</div>
-    </div>
-    <div class="engine-cell">
-      <div class="engine-lbl">1h Price Change</div>
-      <div class="engine-val" id="eChange1">···</div>
-      <div class="engine-sub">vs. prior 1h</div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <div class="footer-row footer-brand">
-      <img class="footer-logo" src="https://raw.githubusercontent.com/surchiai/Html/refs/heads/main/public/Logo.png" alt="SURCHI"/>
-      <span>SURCHI Terminal · Live on-chain data</span>
-    </div>
-    <div class="footer-socials">
-      <a class="social-icon" href="https://www.surchi.xyz" target="_blank" rel="noopener" aria-label="Website" title="Website">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9z"/></svg>
-      </a>
-      <a class="social-icon" href="https://solscan.io/token/C8QShhzBJEA769SYTKRfg2fFFNP3dxqaKumApMi4huhi" target="_blank" rel="noopener" aria-label="Solscan" title="Solscan">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      </a>
-      <a class="social-icon" href="https://x.com/surchicoin" target="_blank" rel="noopener" aria-label="X (Twitter)" title="X / Twitter">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2.6h3.2l-7 8 8.2 10.8h-6.4l-5-6.6-5.8 6.6H2L9.5 13 1.7 2.6h6.5l4.5 6 6.2-6zM17.7 19.5h1.8L7 4.4H5l12.7 15.1z"/></svg>
-      </a>
-      <a class="social-icon" href="https://discord.gg/uH2Jp3yu5h" target="_blank" rel="noopener" aria-label="Discord" title="Discord">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 5.4A18 18 0 0 0 15.9 4l-.3.6a13 13 0 0 1 3.6 1.3 15.6 15.6 0 0 0-13.9 0 13 13 0 0 1 3.6-1.3L8.6 4a18 18 0 0 0-4.4 1.4C1.7 9 1 12.5 1.3 16a18.3 18.3 0 0 0 5.4 2.6 13 13 0 0 0 1.2-1.9 11.7 11.7 0 0 1-1.9-.9l.5-.4a13 13 0 0 0 11 0l.5.4a11.7 11.7 0 0 1-1.9.9c.4.7.8 1.3 1.2 1.9a18.2 18.2 0 0 0 5.4-2.6c.4-4-.7-7.5-2.4-10.6zM9 14.3c-.8 0-1.5-.8-1.5-1.7S8.1 11 9 11s1.5.8 1.5 1.6-.6 1.7-1.5 1.7zm6 0c-.8 0-1.5-.8-1.5-1.7S14.1 11 15 11s1.5.8 1.5 1.6-.6 1.7-1.5 1.7z"/></svg>
-      </a>
-      <a class="social-icon" href="https://t.me/Surchicommunity" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.6 18.6 20c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9L18 7.3c.5-.4-.1-.6-.7-.3L6.4 13.6l-4.8-1.5c-1-.3-1-1 .2-1.5L20.5 3.7c.9-.3 1.6.2 1.4 1z"/></svg>
-      </a>
-      <a class="social-icon" href="https://medium.com/@surchicoin" target="_blank" rel="noopener" aria-label="Medium" title="Medium">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 6.5c0-.4-.1-.7-.4-.9L1 3.6V3.3h6.2l4.8 10.5L16.3 3.3h5.9v.3l-1.4 1.4c-.1.1-.2.3-.1.5v12.2c0 .2 0 .3.1.5l1.4 1.4v.3h-6.9v-.3l1.4-1.4c.1-.2.1-.3.1-.5V7.8l-4.9 12.4h-.7L6.1 7.8v8.3c0 .3.1.7.4 1l1.8 2.1v.3H3.1v-.3l1.8-2.1c.3-.3.4-.7.3-1V6.5z"/></svg>
-      </a>
-      <a class="social-icon" href="https://GitHub.com/surchiai" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.3-1.1.6-1.4-2.2-.2-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.2-.5-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 4.9 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.5.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .3.3.6.9.6 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
-      </a>
-    </div>
-    <div class="footer-row mono" style="word-break:break-all">C8QShhzBJEA769SYTKRfg2fFFNP3dxqaKumApMi4huhi</div>
-  </div>
-
-</div>
+<noscript><style>.hero [data-in],.hero__visual{opacity:1!important;animation:none!important}</style></noscript>
 
 <script>
-const MINT = "C8QShhzBJEA769SYTKRfg2fFFNP3dxqaKumApMi4huhi";
-const GT_TOKEN_API = `https://api.geckoterminal.com/api/v2/networks/solana/tokens/${MINT}`;
-const GT_POOLS_API = `https://api.geckoterminal.com/api/v2/networks/solana/tokens/${MINT}/pools`;
-const GT_TRADES_API = (poolAddress) => `https://api.geckoterminal.com/api/v2/networks/solana/pools/${poolAddress}/trades`;
+(function () {
+  'use strict';
 
-const SUBSCRIPT_DIGITS = ['₀','₁','₂','₃','₄','₅','₆','₇','₈','₉'];
-function toSubscript(num){
-  return String(num).split('').map(d => SUBSCRIPT_DIGITS[+d] ?? d).join('');
-}
+  var root = document.documentElement;
 
-function fmtUsd(n, opts={}){
-  if(n===null||n===undefined||isNaN(n)) return "—";
-  const abs = Math.abs(n);
-  if(abs >= 1e9) return "$"+(n/1e9).toFixed(2)+"B";
-  if(abs >= 1e6) return "$"+(n/1e6).toFixed(2)+"M";
-  if(abs >= 1e3) return "$"+(n/1e3).toFixed(2)+"K";
-  if(abs < 0.01 && abs > 0) return fmtPrice(n);
-  return "$"+n.toFixed(opts.decimals ?? 4);
-}
+  /* Official logo: swap in the PNG once it has loaded; the SVG mark stays as fallback. */
+  (function logoProbe() {
+    var first = document.querySelector('.logo__img');
+    if (!first) return;
+    var probe = new Image();
+    probe.onload = function () { root.classList.add('has-logo'); };
+    probe.src = first.getAttribute('src');
+  })();
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var main = document.getElementById('main');
+  var footer = document.querySelector('.site-footer');
 
-function fmtPrice(n, sigFigs=3){
-  if(n===null||n===undefined||isNaN(n)) return "—";
-  if(n === 0) return "$0.00";
-  const neg = n < 0;
-  const abs = Math.abs(n);
-  if(abs >= 1){
-    const s = abs.toFixed(4).replace(/0+$/,'').replace(/\.$/,'');
-    return (neg?'-':'')+"$"+s;
+  /* ---------------- Modal ---------------- */
+  var dlg = document.getElementById('notice');
+  var panel = dlg.querySelector('.modal__panel');
+  var elKicker = document.getElementById('notice-kicker');
+  var elTitle = document.getElementById('notice-title');
+  var elText = document.getElementById('notice-text');
+  var DEFAULT = { kicker: elKicker.textContent, title: elTitle.textContent, text: elText.textContent };
+  var returnFocusTo = null;
+  var closing = false;
+
+  function openNotice(content, trigger) {
+    var c = content || DEFAULT;
+    elKicker.textContent = c.kicker;
+    elTitle.textContent = c.title;
+    elText.textContent = c.text;
+    returnFocusTo = trigger || document.activeElement;
+    root.classList.add('is-locked');
+    if (typeof dlg.showModal === 'function') { dlg.showModal(); } else { dlg.setAttribute('open', ''); }
+    document.getElementById('notice-close').focus();
   }
-  const fixed = abs.toFixed(20);
-  const decimals = fixed.split('.')[1] || '';
-  let totalZeros = 0;
-  for(let i=0;i<decimals.length;i++){
-    if(decimals[i] === '0') totalZeros++;
-    else break;
+
+  function finishClose() {
+    if (!closing) return;
+    closing = false;
+    dlg.classList.remove('is-closing');
+    if (typeof dlg.close === 'function') { dlg.close(); } else { dlg.removeAttribute('open'); }
+    root.classList.remove('is-locked');
+    if (returnFocusTo && document.contains(returnFocusTo)) { try { returnFocusTo.focus(); } catch (e) {} }
   }
-  if(totalZeros < 4){
-    const s = abs.toFixed(8).replace(/0+$/,'').replace(/\.$/,'');
-    return (neg?'-':'')+"$"+s;
+
+  function closeNotice() {
+    if (!dlg.open || closing) return;
+    closing = true;
+    if (reduce.matches) { finishClose(); return; }
+    dlg.classList.add('is-closing');
+    var done = function () { finishClose(); };
+    panel.addEventListener('animationend', done, { once: true });
+    setTimeout(done, 320);
   }
-  const sig = decimals.substring(totalZeros, totalZeros + sigFigs);
-  const subCount = totalZeros - 1;
-  return (neg?'-':'')+"$0.0"+toSubscript(subCount)+sig;
-}
 
-function fmtPriceHtml(n, sigFigs=3){
-  return fmtPrice(n, sigFigs);
-}
+  dlg.addEventListener('cancel', function (e) { e.preventDefault(); closeNotice(); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) closeNotice(); });
+  document.getElementById('notice-close').addEventListener('click', closeNotice);
 
-function fmtNum(n){
-  if(n===null||n===undefined||isNaN(n)) return "—";
-  return new Intl.NumberFormat('en-US').format(n);
-}
-function fmtPct(n){
-  if(n===null||n===undefined||isNaN(n)) return "—";
-  const s = n>0?"+":"";
-  return s+n.toFixed(2)+"%";
-}
-function timeAgo(ts){
-  if(!ts) return '—';
-  const diff = Math.max(0, Math.floor((Date.now() - new Date(ts).getTime())/1000));
-  if(diff < 5) return 'now';
-  if(diff < 60) return diff+'s ago';
-  if(diff < 3600) return Math.floor(diff/60)+'m ago';
-  return Math.floor(diff/3600)+'h ago';
-}
-function shortAddr(addr){
-  if(!addr) return '—';
-  return addr.slice(0,4)+'…'+addr.slice(-4);
-}
+  /* ---------------- Mobile menu ---------------- */
+  var header = document.getElementById('top');
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('menu');
+  var menuOpen = false;
 
-let togglePlatformsOpen = false;
-function togglePlatforms(){
-  togglePlatformsOpen = !togglePlatformsOpen;
-  const grid = document.getElementById('platformGrid');
-  const chevron = document.getElementById('platformChevron');
-  grid.classList.toggle('open', togglePlatformsOpen);
-  chevron.style.transform = togglePlatformsOpen ? 'rotate(180deg)' : 'rotate(0deg)';
-}
-
-function copyMint(){
-  navigator.clipboard.writeText(MINT).then(()=>{
-    const btn = document.getElementById('copyBtn');
-    btn.textContent = 'Copied';
-    btn.classList.add('copied');
-    setTimeout(()=>{ btn.textContent='Copy'; btn.classList.remove('copied'); }, 1600);
+  function setMenu(open, restoreFocus) {
+    menuOpen = open;
+    menu.classList.toggle('is-open', open);
+    header.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    root.classList.toggle('is-locked', open);
+    main.inert = open;
+    if (footer) footer.inert = open;
+    if (open) {
+      var first = menu.querySelector('a');
+      if (first) setTimeout(function () { first.focus({ preventScroll: true }); }, 60);
+    } else if (restoreFocus) {
+      burger.focus();
+    }
+  }
+  burger.addEventListener('click', function () { setMenu(!menuOpen, true); });
+  menu.addEventListener('click', function (e) {
+    var a = e.target.closest('a');
+    if (a) setMenu(false, false);
   });
-}
-
-function renderChart(poolAddress){
-  const wrap = document.getElementById('chartEmbed');
-  if(!poolAddress){
-    wrap.innerHTML = '<div class="error-row">Chart unavailable — no active pool found.</div>';
-    return;
-  }
-  wrap.innerHTML = `<iframe src="https://www.geckoterminal.com/solana/pools/${poolAddress}?embed=1&info=0&swaps=0&theme=dark" loading="lazy"></iframe>`;
-}
-
-function renderFlow(tx){
-  const grid = document.getElementById('flowGrid');
-  const windows = [['m5','5M'],['h1','1H'],['h6','6H'],['h24','24H']];
-  grid.innerHTML = windows.map(([key,label])=>{
-    const w = tx?.[key];
-    const buys = w?.buys ?? 0;
-    const sells = w?.sells ?? 0;
-    const total = buys+sells;
-    const buyPct = total ? (buys/total*100) : 50;
-    return `
-      <div class="flow-cell">
-        <div class="flow-window">${label}</div>
-        <div class="flow-bars"><div class="flow-buy" style="width:${buyPct}%"></div><div class="flow-sell" style="width:${100-buyPct}%"></div></div>
-        <div class="flow-counts"><span class="b">${buys}B</span> / <span class="s">${sells}S</span></div>
-      </div>`;
-  }).join('');
-}
-
-const PAIRS_VISIBLE_COUNT = 3;
-let allPools = [];
-let pairsExpanded = false;
-
-function pairCardHtml(p){
-  const change = p.change24;
-  const changeColor = change>=0 ? 'var(--green)' : 'var(--red)';
-  return `
-    <div class="pair-card">
-      <div class="pair-top">
-        <span class="pair-name">${p.baseSymbol}/${p.quoteSymbol}</span>
-        <span class="pair-dex">${p.dexName}</span>
-      </div>
-      <div class="pair-stats">
-        <span>Liq <span class="val">${fmtUsd(p.liquidity)}</span></span>
-        <span>Vol24h <span class="val">${fmtUsd(p.volume24)}</span></span>
-        <span style="color:${changeColor};font-weight:700">${fmtPct(change)}</span>
-      </div>
-    </div>`;
-}
-
-function renderPairsList(){
-  const list = document.getElementById('pairsList');
-  const meta = document.getElementById('pairsMeta');
-  if(!allPools.length){
-    list.innerHTML = '<div class="error-row">No live pools found for this mint.</div>';
-    meta.textContent = '';
-    return;
-  }
-  meta.textContent = `${allPools.length} found`;
-  const visible = pairsExpanded ? allPools : allPools.slice(0, PAIRS_VISIBLE_COUNT);
-  let html = visible.map(pairCardHtml).join('');
-  if(allPools.length > PAIRS_VISIBLE_COUNT){
-    const hiddenCount = allPools.length - PAIRS_VISIBLE_COUNT;
-    html += `
-      <button class="pairs-toggle-btn ${pairsExpanded ? 'expanded':''}" onclick="togglePairsExpanded()">
-        <span>${pairsExpanded ? 'Show less' : `Show ${hiddenCount} more pair${hiddenCount>1?'s':''}`}</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
-      </button>`;
-  }
-  list.innerHTML = html;
-}
-
-function togglePairsExpanded(){
-  pairsExpanded = !pairsExpanded;
-  renderPairsList();
-}
-
-function renderPairs(pools){
-  allPools = pools || [];
-  pairsExpanded = false;
-  renderPairsList();
-}
-
-/* ═══════════ REAL-TIME BUY/SELL TRADE FEED ═══════════ */
-let currentPoolAddress = null;
-let lastTradeIds = new Set();
-let tradesPollTimer = null;
-
-async function fetchTrades(poolAddress){
-  if(!poolAddress) return;
-  const syncEl = document.getElementById('tradesSync');
-  try{
-    const res = await fetch(GT_TRADES_API(poolAddress));
-    if(!res.ok) throw new Error('trades response not ok');
-    const json = await res.json();
-    const trades = (json.data || []).map(t=>{
-      const a = t.attributes || {};
-      const kind = (a.kind || '').toLowerCase();
-      const priceUsd = parseFloat(a.price_to_in_usd ?? a.price_from_in_usd);
-      const baseAmount = parseFloat(kind === 'buy' ? a.to_token_amount : a.from_token_amount);
-      return {
-        id: t.id,
-        kind: kind === 'sell' ? 'sell' : 'buy',
-        priceUsd,
-        volumeUsd: parseFloat(a.volume_in_usd),
-        baseAmount,
-        trader: a.tx_from_address,
-        txHash: a.tx_hash,
-        timestamp: a.block_timestamp
-      };
-    }).filter(t => !isNaN(t.volumeUsd));
-    renderTrades(trades);
-    if(syncEl) syncEl.textContent = 'Live';
-  }catch(err){
-    console.error('trades fetch error', err);
-    if(syncEl) syncEl.textContent = 'Reconnecting…';
-  }
-}
-
-function renderTrades(trades){
-  const body = document.getElementById('tradesBody');
-  if(!trades || !trades.length){
-    body.innerHTML = '<tr><td colspan="6"><div class="trades-empty">No recent trades found for this pool.</div></td></tr>';
-    return;
-  }
-  const isFirstLoad = lastTradeIds.size === 0;
-  const newIds = new Set();
-  body.innerHTML = trades.slice(0, 30).map(t=>{
-    newIds.add(t.id);
-    const flashClass = (!isFirstLoad && !lastTradeIds.has(t.id)) ? `trade-row-new ${t.kind}` : '';
-    const explorerUrl = t.txHash ? `https://solscan.io/tx/${t.txHash}` : '#';
-    return `
-      <tr class="${flashClass}">
-        <td>${timeAgo(t.timestamp)}</td>
-        <td><span class="side-tag ${t.kind}">${t.kind === 'buy' ? 'BUY' : 'SELL'}</span></td>
-        <td>${fmtNum(Math.round(t.baseAmount))}</td>
-        <td>${fmtPrice(t.priceUsd)}</td>
-        <td>${fmtUsd(t.volumeUsd)}</td>
-        <td><a href="${explorerUrl}" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">${shortAddr(t.trader)}</a></td>
-      </tr>`;
-  }).join('');
-  lastTradeIds = newIds;
-}
-
-function startTradesPolling(poolAddress){
-  currentPoolAddress = poolAddress;
-  if(tradesPollTimer) clearInterval(tradesPollTimer);
-  if(!poolAddress) return;
-  lastTradeIds = new Set();
-  fetchTrades(poolAddress);
-  tradesPollTimer = setInterval(()=> fetchTrades(currentPoolAddress), 7000);
-}
-
-async function fetchAll(){
-  const btn = document.getElementById('refreshBtn');
-  btn.classList.add('spinning');
-  const syncEl = document.getElementById('lastUpdated');
-  syncEl.textContent = 'Syncing…';
-
-  try{
-    const res = await fetch(`${GT_POOLS_API}?include=base_token,quote_token,dex&page=1`);
-    if(!res.ok) throw new Error('Network response was not ok');
-    const json = await res.json();
-    const rawPools = json.data || [];
-    const included = json.included || [];
-    const byId = {};
-    included.forEach(item => { byId[`${item.type}:${item.id}`] = item; });
-
-    const mintTokenId = `solana_${MINT}`;
-
-    const pools = rawPools.map(pool => {
-      const a = pool.attributes || {};
-      const baseRel = pool.relationships?.base_token?.data;
-      const quoteRel = pool.relationships?.quote_token?.data;
-      const dexRel = pool.relationships?.dex?.data;
-      const baseTok = baseRel ? byId[`token:${baseRel.id}`] : null;
-      const quoteTok = quoteRel ? byId[`token:${quoteRel.id}`] : null;
-      const dexInfo = dexRel ? byId[`dex:${dexRel.id}`] : null;
-      const isBaseSurchi = baseRel?.id === mintTokenId;
-      return {
-        address: a.address,
-        priceUsd: parseFloat(isBaseSurchi ? a.base_token_price_usd : a.quote_token_price_usd),
-        liquidity: parseFloat(a.reserve_in_usd),
-        volume24: parseFloat(a.volume_usd?.h24),
-        marketCap: parseFloat(a.market_cap_usd) || parseFloat(a.fdv_usd),
-        fdv: parseFloat(a.fdv_usd),
-        change24: parseFloat(a.price_change_percentage?.h24),
-        change6: parseFloat(a.price_change_percentage?.h6),
-        change1: parseFloat(a.price_change_percentage?.h1),
-        transactions: a.transactions,
-        baseSymbol: baseTok?.attributes?.symbol || 'SUR',
-        quoteSymbol: quoteTok?.attributes?.symbol || 'SOL',
-        dexName: dexInfo?.attributes?.name || 'dex'
-      };
-    }).filter(p => !isNaN(p.liquidity));
-
-    if(!pools.length){
-      document.getElementById('heroPrice').textContent = 'No data';
-      document.getElementById('priceSubline').textContent = 'No live Solana pools found for this mint yet.';
-      renderChart(null);
-      renderPairs([]);
-      document.getElementById('flowGrid').innerHTML = '<div class="error-row" style="grid-column:1/-1">No flow data available.</div>';
-      document.getElementById('tradesBody').innerHTML = '<tr><td colspan="6"><div class="trades-empty">No pool available yet.</div></td></tr>';
-      syncEl.textContent = 'Last checked ' + new Date().toLocaleTimeString();
-      btn.classList.remove('spinning');
-      return;
+  document.addEventListener('keydown', function (e) {
+    if (!menuOpen) return;
+    if (e.key === 'Escape') { e.preventDefault(); setMenu(false, true); return; }
+    if (e.key === 'Tab') {
+      var items = [burger].concat([].slice.call(menu.querySelectorAll('a, button')));
+      var i = items.indexOf(document.activeElement);
+      if (e.shiftKey && (i <= 0)) { e.preventDefault(); items[items.length - 1].focus(); }
+      else if (!e.shiftKey && (i === items.length - 1)) { e.preventDefault(); items[0].focus(); }
     }
+  });
+  window.addEventListener('resize', function () { if (menuOpen && window.innerWidth > 1000) setMenu(false, false); });
 
-    const primary = pools.reduce((a,b)=> (b.liquidity||0) > (a.liquidity||0) ? b : a, pools[0]);
+  /* ---------------- Launch App ---------------- */
+  [].forEach.call(document.querySelectorAll('[data-open-app]'), function (btn) {
+    btn.addEventListener('click', function () {
+      var fromMenu = !!btn.closest('.menu');
+      if (fromMenu) setMenu(false, false);
+      openNotice(null, fromMenu ? burger : btn);
+    });
+  });
 
-    document.getElementById('heroPrice').textContent = fmtPriceHtml(primary.priceUsd);
-    const changeEl = document.getElementById('priceChangeInline');
-    if(!isNaN(primary.change24)){
-      changeEl.style.display = 'inline-flex';
-      changeEl.textContent = fmtPct(primary.change24);
-      changeEl.className = 'price-change-inline ' + (primary.change24>=0 ? 'up':'down');
-    }
-    document.getElementById('priceSubline').textContent = `${primary.baseSymbol} · ${primary.dexName} · updated live`;
+  /* ---------------- Privacy policy panel ---------------- */
+  var sheet = document.getElementById('privacy-policy');
+  var sheetPanel = sheet.querySelector('.sheet__panel');
+  var sheetBody = sheet.querySelector('.sheet__body');
+  var sheetClose = sheet.querySelector('.sheet__close');
+  var sheetReturn = null;
+  var sheetClosing = false;
 
-    document.getElementById('tMcap').textContent = fmtUsd(primary.marketCap);
-    document.getElementById('tFdv').textContent = fmtUsd(primary.fdv);
-    document.getElementById('tLiq').textContent = fmtUsd(primary.liquidity);
-    document.getElementById('tVol').textContent = fmtUsd(primary.volume24);
-    const txns24 = (primary.transactions?.h24?.buys||0) + (primary.transactions?.h24?.sells||0);
-    document.getElementById('tTxns').textContent = fmtNum(txns24);
-    document.getElementById('tPairs').textContent = pools.length;
-
-    document.getElementById('eChange24').textContent = fmtPct(primary.change24);
-    document.getElementById('eChange24').style.color = (primary.change24||0)>=0 ? 'var(--green)' : 'var(--red)';
-    document.getElementById('eChange6').textContent = fmtPct(primary.change6);
-    document.getElementById('eChange6').style.color = (primary.change6||0)>=0 ? 'var(--green)' : 'var(--red)';
-    document.getElementById('eChange1').textContent = fmtPct(primary.change1);
-    document.getElementById('eChange1').style.color = (primary.change1||0)>=0 ? 'var(--green)' : 'var(--red)';
-
-    renderChart(primary.address);
-    renderFlow(primary.transactions);
-    renderPairs(pools.sort((a,b)=>(b.liquidity||0)-(a.liquidity||0)));
-
-    if(primary.address !== currentPoolAddress){
-      startTradesPolling(primary.address);
-    }
-
-    syncEl.textContent = 'Synced ' + new Date().toLocaleTimeString();
-  }catch(err){
-    console.error(err);
-    document.getElementById('heroPrice').textContent = 'Error';
-    document.getElementById('priceSubline').textContent = 'Could not reach the data provider — check connection and retry.';
-    syncEl.textContent = 'Sync failed';
+  function openSheet(trigger) {
+    sheetReturn = trigger || document.activeElement;
+    root.classList.add('is-locked');
+    if (typeof sheet.showModal === 'function') { sheet.showModal(); } else { sheet.setAttribute('open', ''); }
+    sheetBody.scrollTop = 0;
+    sheetClose.focus();
   }
-  btn.classList.remove('spinning');
-}
-
-fetchAll();
-setInterval(fetchAll, 25000);
-</script>
-</body>
-</html>
+  function finishSheet() {
+    if (!sheetClosing) return;
+    sheetClosing = false;
+    sheet.classList.remove('is-closing');
+    if (typeof sheet.close === 'function') { sheet.close(); } else { sheet.removeAttribute('open'); }
+    root.classList.remove('is-locked');
+    if (sheetReturn && document.contains(sheetReturn)) { try { sheetReturn.focus(); } catch (e) {} }
+  }
+  function closeSheet() {
+    if (!sheet.open || sheetClosing) return;
+    sheetClosing = true;
+    if (reduce.matches) { finishSheet(); return; }
+    sheet.classList.add('is-closing');
+    sheetPanel.addEventListener('animationend', finishSheet, { once: true });
+    setTime
